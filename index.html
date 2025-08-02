@@ -4,117 +4,134 @@
   <meta charset="UTF-8">
   <title>Mimi's Frutiger Aero Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Frutiger Aero benzeri font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
       min-height: 100vh;
       background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKQp8be02KSELSMtUVfAWA1_m3DNxD9gy-VA&usqp=CAU') center center / cover no-repeat fixed;
       overflow-x: hidden;
+      position: relative;
     }
+    /* Hai! rain effect */
+    .hai-rain {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hai-drop {
+      position: absolute;
+      color: #00bfff;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.5em;
+      opacity: 0.75;
+      text-shadow: 0 2px 8px #00bfff80, 0 0px 2px #fff;
+      pointer-events: none;
+      filter: blur(0.5px);
+      user-select: none;
+      will-change: transform;
+      transition: opacity 0.3s;
+    }
+    /* Main layout */
     .container {
-      max-width: 270px;
+      max-width: 295px;
       margin: 38px auto 0 auto;
       background: rgba(190,190,190,0.14);
-      border-radius: 12px;
+      border-radius: 13px;
       box-shadow: 0 4px 14px 0 rgba(31,38,135,0.11);
       border: 1.2px solid rgba(120,120,130,0.13);
-      padding: 11px 10px 13px 10px;
+      padding: 11px 10px 11px 10px;
       backdrop-filter: blur(4px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 13px;
+      gap: 16px;
+      z-index: 2;
+      position: relative;
     }
-    .about-btn {
-      display: block;
-      margin: 0 auto 0 auto;
-      padding: 4px 9px;
-      font-size: 0.90em;
-      font-weight: 700;
-      background: #00bfff;
-      color: #fff;
-      border: none;
-      border-radius: 7px;
-      box-shadow: 0 2px 8px #00bfff22;
-      cursor: pointer;
-      letter-spacing: 1px;
-      margin-bottom: 3px;
-      transition: background 0.12s;
-    }
-    .about-btn:hover { background: #0080c0; }
-    .profile {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.75);
-      border-radius: 7px;
-      border: 1.2px solid #bdbdbd;
-      box-shadow: 0 1px 6px rgba(100,100,110,0.05);
-      padding: 6px 8px 6px 7px;
-      font-size: 0.95em;
+    .bubble-row {
       width: 100%;
-      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      gap: 11px;
+      margin-bottom: 10px;
     }
-    .profile img {
-      width: 26px; height: 26px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1.5px solid #00bfff;
-      background: #caf0fa;
-    }
-    .profile-info {
+    .info-bubble {
       flex: 1;
-      font-size: 0.93em;
-      min-width: 0;
+      text-align: center;
+      background: rgba(255,255,255,0.78);
+      border-radius: 12px;
+      border: 1.5px solid #bdbdbd;
+      box-shadow: 0 1px 8px #00bfff22;
+      padding: 8px 3px 8px 3px;
+      font-size: 0.94em;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      color: #0090bb;
+      cursor: pointer;
+      transition: background 0.14s;
+      user-select: none;
     }
-    .profile-info a {
+    .info-bubble:hover { background: #e6f7ff; }
+    /* Instagram profile center */
+    .profile-center {
+      margin: 0 auto 0 auto;
+      background: rgba(255,255,255,0.82);
+      border-radius: 14px;
+      border: 1.7px solid #bdbdbd;
+      box-shadow: 0 1px 8px #b9eaff55;
+      padding: 11px 10px 10px 10px;
+      width: 88%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1em;
+      position: relative;
+    }
+    .profile-center img {
+      width: 46px; height: 46px;
+      object-fit: cover;
+      border-radius: 9px;
+      border: 2px solid #00bfff;
+      background: #caf0fa;
+      margin-bottom: 7px;
+    }
+    .profile-center a {
       text-decoration: none;
       color: #00bfff;
       font-weight: bold;
-      font-size: 0.95em;
-      display: block;
-      margin-bottom: 1px;
+      font-size: 1.04em;
+      margin-bottom: 2px;
       word-break: break-all;
     }
-    .profile-info .bio {
+    .profile-center .bio {
       color: #408bad;
-      font-size: 0.89em;
+      font-size: 0.97em;
       font-style: italic;
       word-break: break-word;
+      margin-top: 2px;
     }
+    /* Music button */
     .music-btn {
       display: block;
-      margin: 7px auto 3px auto;
-      padding: 4px 13px;
-      font-size: 0.93em;
+      margin: 3px auto 7px auto;
+      padding: 5px 15px;
+      font-size: 0.96em;
       font-weight: 600;
       background: #d1f7ff;
       color: #0090bb;
-      border: 1px solid #bdbdbd;
-      border-radius: 7px;
+      border: 1.2px solid #bdbdbd;
+      border-radius: 8px;
       cursor: pointer;
       transition: background 0.13s;
       letter-spacing: 0.5px;
-      box-shadow: 0 1px 7px #00bfff22;
+      box-shadow: 0 1px 8px #00bfff22;
     }
     .music-btn:hover { background: #caf0fa;}
-    .saywhatever {
-      text-align: center;
-      font-size: 0.93em;
-      font-weight: 600;
-      color: #0090bb;
-      background: rgba(255,255,255,0.7);
-      border-radius: 4px;
-      border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
-      padding: 5px 0 4px 0;
-      margin-bottom: 2px;
-      letter-spacing: 0.5px;
-      width: 100%;
-      box-sizing: border-box;
-    }
     /* Notebook popup */
     .notebook-popup {
       position: fixed;
@@ -136,14 +153,14 @@
       border-radius: 13px;
       border: 1.7px solid #ff91b7;
       box-shadow: 0 0 12px #ffb6df55;
-      padding: 13px 10px 12px 10px;
-      min-width: 130px;
-      max-width: 90vw;
+      padding: 13px 15px 12px 15px;
+      min-width: 170px;
+      max-width: 95vw;
       position: relative;
       text-align: center;
-      font-size: 0.98em;
+      font-size: 1em;
       color: #d13079;
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
       font-weight: 600;
       letter-spacing: 0.5px;
       display: flex;
@@ -158,8 +175,8 @@
       to { transform: scale(1);}
     }
     .notebook-heart {
-      font-size: 1.35em;
-      margin-bottom: 3px;
+      font-size: 1.7em;
+      margin-bottom: 7px;
       color: #ff91b7;
       animation: heartbeat 1.3s infinite;
     }
@@ -170,9 +187,9 @@
     }
     .notebook-close {
       position: absolute;
-      top: 4px; right: 9px;
+      top: 7px; right: 14px;
       background: none;
-      font-size: 1em;
+      font-size: 1.2em;
       color: #d13079;
       border: none;
       cursor: pointer;
@@ -183,61 +200,61 @@
     /* Comments section balloon */
     .comments-balloon {
       width: 100%;
-      background: rgba(255,255,255,0.78);
-      border-radius: 9px;
+      background: rgba(255,255,255,0.81);
+      border-radius: 13px;
       border: 1.2px solid #bdbdbd;
       box-shadow: 0 1px 7px rgba(100,100,110,0.07);
-      padding: 10px 7px 10px 7px;
-      margin-top: 30px;
-      margin-bottom: 0;
+      padding: 12px 10px 11px 10px;
+      margin: 32px auto 8px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       box-sizing: border-box;
+      z-index: 2;
     }
     .comments {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      margin-bottom: 5px;
+      gap: 5px;
+      margin-bottom: 4px;
     }
     .comment {
       background: rgba(200,200,200,0.38);
-      border-radius: 4px;
+      border-radius: 5px;
       border: 1px solid #bdbdbd;
       box-shadow: 0 1px 4px rgba(100,100,110,0.04);
-      padding: 4px 5px 4px 5px;
-      font-size: 0.92em;
+      padding: 4px 7px 4px 7px;
+      font-size: 0.97em;
       word-break: break-word;
     }
     .comment .author {
       font-weight: bold;
       color: #00bfff;
-      margin-right: 4px;
-      font-size: 0.95em;
+      margin-right: 5px;
+      font-size: 1em;
     }
     .comment-form {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       background: rgba(255,255,255,0.7);
-      border-radius: 4px;
+      border-radius: 6px;
       border: 1px solid #bdbdbd;
       box-shadow: 0 1px 4px rgba(100,100,110,0.04);
-      padding: 7px 4px 7px 4px;
+      padding: 8px 5px 8px 5px;
       margin-top: 0;
-      font-size: 0.92em;
+      font-size: 0.98em;
       box-sizing: border-box;
     }
     .comment-form input, .comment-form textarea {
       font-family: inherit;
-      font-size: 0.92em;
-      border-radius: 4px;
+      font-size: 0.97em;
+      border-radius: 5px;
       border: 1px solid #00bfff;
-      padding: 4px 6px;
+      padding: 5px 8px;
       background: rgba(255,255,255,0.5);
       resize: none;
       outline: none;
@@ -246,11 +263,11 @@
       background: #00bfff;
       color: #fff;
       border: none;
-      border-radius: 4px;
-      padding: 4px 0;
+      border-radius: 5px;
+      padding: 6px 0;
       font-weight: bold;
       cursor: pointer;
-      font-size: 0.93em;
+      font-size: 1em;
       box-shadow: 0 1px 4px #00bfff33;
       transition: background 0.13s;
     }
@@ -259,25 +276,50 @@
     }
     @media (max-width: 540px) {
       .container, .comments-balloon {max-width: 96vw; margin: 7px 2vw;}
-      .profile img { width: 17px; height: 17px; }
-      .notebook { min-width: 43vw; padding: 8px 7vw 9px 7vw;}
+      .profile-center img { width: 33px; height: 33px; }
+      .notebook { min-width: 55vw; padding: 9px 7vw 11px 7vw;}
+      .info-bubble { font-size: 0.93em;}
     }
+    /* Instagram list in bestfriends bubble */
+    .insta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      align-items: center;
+      margin: 10px 0 0 0;
+    }
+    .insta-list a {
+      color: #00bfff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      background: #e6f7ff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .insta-list a:hover { background: #caf0fa;}
   </style>
 </head>
 <body>
+  <!-- Hai! Rain effect -->
+  <div class="hai-rain" id="haiRain"></div>
   <!-- Play music button and hidden audio -->
   <button class="music-btn" id="playMusic">Play music</button>
   <audio id="bgmusic" src="https://dl.sndup.net/3rtd/waiting-leverfall.mp3" loop></audio>
   <div class="container">
-    <button class="about-btn" onclick="showNotebook()">About</button>
-    <div class="profile">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXNDm6kNGAZzoyGCG9pzDyfl3yEB7i6diIJVVcd29pA&s" alt="Profile Picture">
-      <div class="profile-info">
-        <a href="https://instagram.com/M1miiqz.x1" target="_blank">@M1miiqz.x1</a>
-        <div class="bio">Pixel DogBoy</div>
-      </div>
+    <div class="bubble-row">
+      <div class="info-bubble" onclick="showNotebook('about')">About</div>
+      <div class="info-bubble" onclick="showNotebook('games')">Game Names</div>
+      <div class="info-bubble" onclick="showNotebook('bestfriends')">Bestfriends! ^w^</div>
     </div>
-    <div class="saywhatever">say whatever u want :3</div>
+    <!-- Instagram profile center -->
+    <div class="profile-center">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXNDm6kNGAZzoyGCG9pzDyfl3yEB7i6diIJVVcd29pA&s" alt="Profile Picture">
+      <a href="https://instagram.com/M1miiqz.x1" target="_blank">@M1miiqz.x1</a>
+      <div class="bio">Pixel DogBoy</div>
+    </div>
   </div>
   <!-- Comments section balloon at bottom -->
   <div class="comments-balloon">
@@ -291,33 +333,92 @@
   <!-- Heart notebook popup -->
   <div id="notebookPopup" style="display:none;">
     <div class="notebook-popup" onclick="closeNotebook(event)">
-      <div class="notebook" onclick="event.stopPropagation();">
+      <div class="notebook" id="notebookContent" onclick="event.stopPropagation();">
         <div class="notebook-heart">💖</div>
         <button class="notebook-close" onclick="closeNotebook(event)" title="Close">&times;</button>
-        <div style="font-size:0.97em;margin-top:4px;">
-          The only thing I know about myself is that I have no brain ^w^
-        </div>
+        <!-- Dynamic content will fill here -->
       </div>
     </div>
   </div>
   <script>
+    // Hai! Rain effect
+    function makeHaiRain() {
+      const haiCount = 14;
+      const rainEl = document.getElementById('haiRain');
+      rainEl.innerHTML = '';
+      for(let i=0;i<haiCount;i++) {
+        const div = document.createElement('div');
+        div.className = 'hai-drop';
+        div.style.left = (i * (100/haiCount) + Math.random()*2) + 'vw';
+        div.style.top = (-20 - Math.random()*10) + 'px';
+        div.textContent = 'hai!';
+        rainEl.appendChild(div);
+        animateHai(div, i);
+      }
+      function animateHai(el, index) {
+        let top = parseFloat(el.style.top);
+        let speed = 0.45 + Math.random()*0.25;
+        function fall() {
+          top += speed;
+          el.style.top = top + 'px';
+          if(top < window.innerHeight-20) {
+            requestAnimationFrame(fall);
+          } else {
+            top = -20 - Math.random()*10;
+            el.style.left = (index * (100/haiCount) + Math.random()*2) + 'vw';
+            el.style.top = top + 'px';
+            requestAnimationFrame(fall);
+          }
+        }
+        fall();
+      }
+    }
+    makeHaiRain();
+
     // Music play button
     document.getElementById('playMusic').onclick = function() {
       var audio = document.getElementById('bgmusic');
       audio.play();
       this.style.display = 'none';
     };
-    // Notebook popup
-    function showNotebook() {
+
+    // Notebook popup dynamic content
+    function showNotebook(type) {
+      let content = '';
+      if(type === 'about') {
+        content = `<div style="margin-top:7px;font-size:1em;">The only thing I know about myself is that I have no brain &gt;.&lt;</div>`;
+      } else if(type === 'games') {
+        content = `<div style="margin-top:7px;font-size:1em;">
+          Roblox: boreas1709<br>
+          War thunder Mobile: Yukarı Akiyama<br>
+          Minecraft: VeXa8758
+        </div>`;
+      } else if(type === 'bestfriends') {
+        content = `<div style="margin-top:7px;font-size:1em;">My Instagram bestfriends:</div>
+        <div class="insta-list" style="margin-top:6px;">
+          <a href="https://instagram.com/y0n6qz.t" target="_blank">@y0n6qz.t</a>
+          <a href="https://instagram.com/cinar.d138" target="_blank">@cinar.d138</a>
+          <a href="https://instagram.com/rainbows._.dashie" target="_blank">@rainbows._.dashie</a>
+          <a href="https://instagram.com/kris.sirg" target="_blank">@kris.sirg</a>
+        </div>`;
+      }
+      document.getElementById('notebookContent').innerHTML =
+        `<div class="notebook-heart">💖</div>
+         <button class="notebook-close" onclick="closeNotebook(event)" title="Close">&times;</button>
+         ${content}`;
       document.getElementById('notebookPopup').style.display = 'block';
     }
     function closeNotebook(e) {
       document.getElementById('notebookPopup').style.display = 'none';
     }
-    // Comments system (localStorage)
+
+    // Comments system (localStorage, name save)
     const commentsEl = document.getElementById('comments');
     const form = document.getElementById('commentForm');
     let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
+    let savedAuthor = localStorage.getItem('blogAuthor') || "";
+    document.getElementById('author').value = savedAuthor;
+
     function renderComments() {
       commentsEl.innerHTML = '';
       if(comments.length === 0) {
@@ -333,13 +434,16 @@
     }
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const author = document.getElementById('author').value.trim();
+      const authorInput = document.getElementById('author');
+      const author = authorInput.value.trim();
       const text = document.getElementById('commentText').value.trim();
       if(author && text) {
         comments.push({author, text});
         localStorage.setItem('blogComments', JSON.stringify(comments));
+        localStorage.setItem('blogAuthor', author); // save name
         renderComments();
         form.reset();
+        authorInput.value = author; // restore name
       }
     });
     renderComments();
