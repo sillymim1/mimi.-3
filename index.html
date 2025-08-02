@@ -341,7 +341,7 @@
       left: 0; top: 0;
       width: 100vw; height: 100vh;
       background: rgba(0,0,0,0.04);
-      /* backdrop-filter: blur(2.4px); kaldırıldı */
+      backdrop-filter: blur(2.4px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -353,7 +353,9 @@
       to { opacity: 1;}
     }
     .popup-balloon {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.40);
+      /* ŞEFFAFLIK ARTTIRILDI */
+      backdrop-filter: blur(9.6px);
       border-radius: 15px;
       border: 1.2px solid #96e2ff;
       box-shadow: 0 0 14px #a6eaff44, 0 0 0 #fff;
@@ -377,7 +379,6 @@
       overflow: hidden;
       text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff33, 0 0 8px #bdf7ff44;
       opacity: 0.97;
-      /* backdrop-filter: blur(9.6px); kaldırıldı */
     }
     @keyframes popin {
       from { transform: scale(0.7);}
@@ -407,6 +408,17 @@
       padding: 2px 0;
       line-height: 1.3em;
       letter-spacing: 0.2px;
+      /* Linkler için gözükmesi için alt çizgi yok ve renkli */
+    }
+    .popup-content a {
+      color: #37b7ff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.14s;
+    }
+    .popup-content a:hover {
+      color: #ff91b7;
+      text-decoration: underline;
     }
     .popup-close {
       position: absolute;
@@ -501,11 +513,11 @@
         content = `<div class="popup-heart">(⁠ ⁠◜⁠‿⁠◝⁠ ⁠)</div>
           <div class="popup-content">
             My Instagram best friends:<br>
-            <span style="color:#37b7ff;font-weight:bold;">@y0n6qz.t</span><br>
-            <span style="color:#37b7ff;font-weight:bold;">@cinar.d138</span><br>
-            <span style="color:#37b7ff;font-weight:bold;">@rainbows._.dashie</span><br>
-            <span style="color:#37b7ff;font-weight:bold;">@kris.sirg</span><br>
-            <span style="color:#37b7ff;font-weight:bold;">@juliachristinne</span>
+            <a href="https://instagram.com/y0n6qz.t" target="_blank">@y0n6qz.t</a><br>
+            <a href="https://instagram.com/cinar.d138" target="_blank">@cinar.d138</a><br>
+            <a href="https://instagram.com/rainbows._.dashie" target="_blank">@rainbows._.dashie</a><br>
+            <a href="https://instagram.com/kris.sirg" target="_blank">@kris.sirg</a><br>
+            <a href="https://instagram.com/juliachristinne" target="_blank">@juliachristinne</a>
           </div>`;
       }
       document.getElementById('popupContent').innerHTML =
