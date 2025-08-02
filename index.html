@@ -4,18 +4,8 @@
   <meta charset="UTF-8">
   <title>Mimi'nin Frutiger Aero Blogu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Frutiger Aero font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --accent: #00bfff;
-      --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.14);
-      --bubble-bg: rgba(180, 190, 200, 0.23);
-      --bubble-border: rgba(120,120,130,0.18);
-      --bubble-shadow: 0 2px 8px rgba(100,100,110,0.08);
-      --glass-bg: rgba(255,255,255,0.65);
-      --glass-border: #b8f7cf;
-    }
     body {
       margin: 0;
       font-family: 'Montserrat', Arial, sans-serif;
@@ -24,10 +14,18 @@
       transition: background 0.5s;
       overflow-x: hidden;
     }
+    .yt-audio {
+      position: fixed;
+      left: -9999px;
+      top: -9999px;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
     .cats {
       position: fixed;
-      top: 0; bottom: 0;
-      left: 0; right: 0;
+      top: 0; bottom: 0; left: 0; right: 0;
       width: 100vw;
       pointer-events: none;
       z-index: 2;
@@ -49,190 +47,130 @@
       0% { transform: translateY(0) scale(1);}
       100% { transform: translateY(-18px) scale(1.1);}
     }
-    .bubble {
-      background: var(--bubble-bg);
-      border-radius: 24px;
-      border: 2.3px solid var(--bubble-border);
-      box-shadow: var(--bubble-shadow);
-      padding: 0;
-      margin: 0;
-      position: relative;
-    }
     .container {
       max-width: 430px;
-      margin: 70px auto 30px auto;
-      background: var(--glass-bg);
-      border-radius: 32px;
-      box-shadow: var(--shadow);
-      border: 2px solid var(--glass-border);
-      padding: 32px 18px 25px 18px;
-      backdrop-filter: blur(16px);
+      margin: 60px auto 30px auto;
+      background: rgba(190,190,190,0.23);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.14);
+      border: 2px solid rgba(120,120,130,0.22);
+      padding: 18px 16px 24px 16px;
+      backdrop-filter: blur(8px);
       z-index: 10;
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 18px;
     }
-    .about-title {
+    .about {
       text-align: center;
-      font-size: 1.22em;
+      font-size: 1.1em;
       font-weight: 700;
       color: #0090bb;
-      margin-bottom: 6px;
-      letter-spacing: 1.1px;
-      padding: 12px 0;
-    }
-    .about-btn {
-      display: block;
-      margin: 0 auto 0 auto;
-      padding: 8px 16px;
-      font-size: 1em;
-      font-weight: 700;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px #00bfff22;
-      cursor: pointer;
-      letter-spacing: 1px;
-      transition: background 0.18s;
+      background: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      border: 2px solid #bdbdbd;
+      box-shadow: 0 2px 8px rgba(100,100,110,0.08);
+      padding: 10px 0 9px 0;
       margin-bottom: 5px;
+      letter-spacing: 0.5px;
     }
-    .about-btn:hover { background: #0080c0; }
-    .about-panel {
-      display: none;
-      background: var(--bubble-bg);
-      border-radius: 22px;
-      border: 2px solid var(--bubble-border);
-      padding: 16px 12px;
-      font-size: 1.09em;
-      color: #408bad;
-      box-shadow: var(--bubble-shadow);
-      margin-bottom: 8px;
-      text-align: center;
-      font-weight: 500;
-      margin-top: 8px;
-    }
-    .profile.bubble {
+    .profile {
       display: flex;
       align-items: center;
-      gap: 18px;
-      margin-bottom: 10px;
-      padding: 13px 10px;
+      gap: 14px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      border: 2px solid #bdbdbd;
+      box-shadow: 0 2px 8px rgba(100,100,110,0.08);
+      padding: 10px 13px 10px 10px;
     }
     .profile img {
-      width: 80px; height: 80px;
+      width: 56px; height: 56px;
       object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      box-shadow: 0 4px 18px #00bfff22;
+      border-radius: 10px;
+      border: 2px solid #00bfff;
       background: #caf0fa;
       margin-left: 0;
       margin-right: 0;
     }
     .profile-info {
       flex: 1;
+      font-size: 1em;
     }
     .profile-info a {
       text-decoration: none;
-      color: var(--accent);
+      color: #00bfff;
       font-weight: bold;
-      font-size: 1.18em;
-      letter-spacing: 1px;
+      font-size: 1.08em;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .profile-info .bio {
       color: #408bad;
-      font-size: 1em;
-      margin-top: 2px;
+      font-size: 0.97em;
       font-style: italic;
     }
-    .song.bubble {
+    .saywhatever {
       text-align: center;
       font-size: 1.09em;
-      color: #0090bb;
-      font-weight: 500;
-      background: var(--bubble-bg);
-      border-radius: 20px;
-      border: 2px solid var(--bubble-border);
-      padding: 13px 0 11px 0;
-      box-shadow: var(--bubble-shadow);
-      letter-spacing: 0.9px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .song a {
-      color: #00bfff;
-      text-decoration: underline;
-      font-size: 0.97em;
-      font-weight: 500;
-      word-break: break-all;
-    }
-    .saywhatever.bubble {
-      text-align: center;
-      font-size: 1.17em;
       font-weight: 700;
-      letter-spacing: 1.1px;
       color: #0090bb;
-      background: var(--bubble-bg);
-      border-radius: 18px;
-      border: 2px solid var(--bubble-border);
-      padding: 11px 0;
-      box-shadow: var(--bubble-shadow);
-      margin-bottom: 8px;
-      margin-top: 0;
+      background: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      border: 2px solid #bdbdbd;
+      box-shadow: 0 2px 8px rgba(100,100,110,0.08);
+      padding: 9px 0 7px 0;
+      margin-bottom: 7px;
+      letter-spacing: 0.6px;
     }
     .comments {
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 5px;
     }
-    .comment.bubble {
-      background: var(--bubble-bg);
-      border-radius: 13px;
-      border: 2px solid var(--bubble-border);
-      box-shadow: var(--bubble-shadow);
-      margin-bottom: 0;
-      padding: 9px 13px 7px 13px;
-      font-size: 1em;
+    .comment {
+      background: rgba(200,200,200,0.55);
+      border-radius: 9px;
+      border: 2px solid #bdbdbd;
+      box-shadow: 0 2px 8px rgba(100,100,110,0.07);
+      padding: 7px 10px 7px 10px;
+      font-size: 0.97em;
       word-break: break-word;
     }
     .comment .author {
       font-weight: bold;
-      color: var(--accent);
-      margin-right: 8px;
-      font-size: 1.05em;
+      color: #00bfff;
+      margin-right: 7px;
+      font-size: 1em;
     }
-    .comment-form.bubble {
+    .comment-form {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      background: var(--bubble-bg);
-      border-radius: 14px;
-      border: 2px solid var(--bubble-border);
-      box-shadow: var(--bubble-shadow);
-      padding: 12px 8px 12px 8px;
-      margin-top: 8px;
+      gap: 7px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      border: 2px solid #bdbdbd;
+      box-shadow: 0 2px 8px rgba(100,100,110,0.08);
+      padding: 8px 7px 8px 7px;
+      margin-top: 0;
     }
     .comment-form input, .comment-form textarea {
       font-family: inherit;
-      font-size: 1em;
-      border-radius: 6px;
-      border: 1.5px solid var(--accent);
-      padding: 7px 11px;
-      background: rgba(255,255,255,0.45);
+      font-size: 0.97em;
+      border-radius: 7px;
+      border: 1.3px solid #00bfff;
+      padding: 6px 10px;
+      background: rgba(255,255,255,0.6);
       resize: none;
       outline: none;
     }
     .comment-form button {
-      background: var(--accent);
+      background: #00bfff;
       color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 7px;
       padding: 7px 0;
       font-weight: bold;
       cursor: pointer;
@@ -244,16 +182,17 @@
       background: #0080c0;
     }
     @media (max-width: 540px) {
-      .container {
-        max-width: 99vw;
-        margin: 16px 2vw;
-        padding: 10px 2vw 10px 2vw;
-      }
-      .profile img { width: 60px; height: 60px; }
+      .container {max-width: 99vw; margin: 14px 1vw; padding: 8px 2vw 12px 2vw;}
+      .profile img { width: 40px; height: 40px; }
     }
   </style>
 </head>
 <body>
+  <!-- Arka planda otomatik çalan YouTube şarkısı (ses) -->
+  <div class="yt-audio">
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/mi_5tf9n7-Y?si=7h5tE9w1DQWCo-xr&autoplay=1&loop=1&playlist=mi_5tf9n7-Y&controls=0&mute=0" frameborder="0" allow="autoplay"></iframe>
+  </div>
+
   <!-- Pixel kediler -->
   <div class="cats">
     <div class="cat cat1"></div>
@@ -264,44 +203,28 @@
     <div class="cat cat6"></div>
   </div>
 
-  <div class="container bubble">
-    <div class="about-title bubble">Hakkımda</div>
-    <button class="about-btn" onclick="toggleAbout()">Hakkımda Butonu</button>
-    <div class="about-panel" id="aboutPanel">
-      HAİİİİ! my name is Kayra but call me Mimi, or call me DogBoy i don't care &gt;.&lt;
-    </div>
-
-    <div class="profile bubble">
+  <div class="container">
+    <div class="about">Hakkımda: Mimi / Kayra | DogBoy</div>
+    <!-- Hakkımda butonu ve paneli kaldırıldı, kısa tanıtım -->
+    <div class="profile">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXNDm6kNGAZzoyGCG9pzDyfl3yEB7i6diIJVVcd29pA&s" alt="Profil Fotoğrafı">
       <div class="profile-info">
         <a href="https://instagram.com/M1miiqz.x1" target="_blank">@M1miiqz.x1</a>
-        <div class="bio">İsmim: Mimi / Kayra<br>Profil: <span style="color:#408bad;font-style:italic;">Pixel DogBoy</span></div>
+        <div class="bio">Pixel DogBoy</div>
       </div>
     </div>
 
-    <div class="song bubble">
-      Şarkı: <b>waiting leverfall</b>
-      <a href="https://youtu.be/mi_5tf9n7-Y?si=7h5tE9w1DQWCo-xr" target="_blank">YouTube'da dinle</a>
-    </div>
-
-    <div class="saywhatever bubble">* Say whatever you want :3 *</div>
+    <div class="about">Şarkı: waiting leverfall</div>
+    <div class="saywhatever">* Say whatever you want :3 *</div>
     
-    <div class="comments" id="comments">
-      <!-- Yorumlar buraya eklenecek -->
-    </div>
-    
-    <form class="comment-form bubble" id="commentForm">
+    <div class="comments" id="comments"></div>
+    <form class="comment-form" id="commentForm">
       <input type="text" id="author" placeholder="Kullanıcı İsmin" required maxlength="24">
       <textarea id="commentText" rows="2" placeholder="Yorumun..." required maxlength="180"></textarea>
       <button type="submit">Yorum Yap</button>
     </form>
   </div>
   <script>
-    // Hakkımda paneli
-    function toggleAbout() {
-      const panel = document.getElementById('aboutPanel');
-      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-    }
     // Yorum sistemi (localStorage ile)
     const commentsEl = document.getElementById('comments');
     const form = document.getElementById('commentForm');
@@ -309,11 +232,11 @@
     function renderComments() {
       commentsEl.innerHTML = '';
       if(comments.length === 0) {
-        commentsEl.innerHTML = '<div class="bubble" style="text-align:center;color:#7bcddb;font-size:1em;padding:9px;">Henüz yorum yok. İlk sen yaz!</div>';
+        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:1em;padding:9px;">Henüz yorum yok. İlk sen yaz!</div>';
       } else {
         comments.forEach(c => {
           const el = document.createElement('div');
-          el.className = 'comment bubble';
+          el.className = 'comment';
           el.innerHTML = `<span class="author">${c.author}</span> ${c.text}`;
           commentsEl.appendChild(el);
         });
