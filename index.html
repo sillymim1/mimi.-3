@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -460,7 +460,7 @@
         <div class="comments" id="comments"></div>
         <form class="comment-form" id="commentForm">
           <input type="text" id="author" placeholder="Your Name" required maxlength="24">
-          <textarea id="commentText" rows="2" placeholder="Your Message" required maxlength="180"></textarea>
+          <textarea id="commentText" rows="2" placeholder="Your message..." required maxlength="180"></textarea>
           <button type="submit">Send</button>
           <button type="submit">I can't see your messages yet, wait for upgradeb:(</button>
         </form>
@@ -568,7 +568,7 @@
 
     // Clear chat fonksiyonu
     function clearChat() {
-      if(confirm('Are you sure you want to clear all comments? :(')) {
+      if(confirm('Are you sure you want to clear all comments?')) {
         comments = [];
         localStorage.setItem('blogComments', "[]");
         renderComments();
@@ -578,4 +578,4 @@
     renderComments();
   </script>
 </body>
-</html>
+    </html>
