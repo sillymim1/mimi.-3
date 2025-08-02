@@ -46,17 +46,17 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding-top: 8px;       /* Eskiden 22px idi, yukarı çekildi */
+      padding-top: 8px;
       padding-bottom: 24px;
     }
     .container {
-      max-width: 370px;      /* Eskiden 320px idi, genişletildi */
+      max-width: 370px;
       width: 100%;
       background: rgba(255,255,255,0.23);
       border-radius: 19px;
       box-shadow: 0 4px 17px 0 rgba(31,38,135,0.13), 0 1px 11px #b9eaff44;
       border: 1.5px solid rgba(120,120,130,0.09);
-      padding: 12px 18px 16px 18px; /* biraz daha içten daraltıldı */
+      padding: 12px 18px 16px 18px;
       backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
@@ -64,7 +64,7 @@
       gap: 16px;
       z-index: 2;
       position: relative;
-      margin-top: 0;         /* gereksiz boşluğu kaldırır */
+      margin-top: 0;
     }
     .bubble-row {
       width: 100%;
@@ -178,8 +178,8 @@
       letter-spacing: 0.2px;
     }
     .comments-balloon {
-      max-width: 370px;      /* Eskiden 320 idi */
-      margin: 3px auto 0 auto;  /* iyice yukarıda */
+      max-width: 370px;
+      margin: 3px auto 0 auto;
       background: rgba(255,255,255,0.20);
       border-radius: 11px;
       border: 1px solid #bdbdbd;
@@ -198,7 +198,7 @@
     }
     .clear-chat-btn {
       position: absolute;
-      top: 2px;   /* Daha yukarıda */
+      top: 2px;
       right: 8px;
       z-index: 3;
       background: none;
@@ -405,9 +405,21 @@
       .clock-bubble { font-size: 1em; padding: 5px 5vw;}
       .clear-chat-btn {width: 15px; height: 15px; font-size:0.85em;}
     }
+    /* ---- ARKA PLAN SEFFAFLIK KATMANI ---- */
+    .background-opacity {
+      position: fixed;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background: rgba(255,255,255,0.15); /* %15 opaklık */
+    }
   </style>
 </head>
 <body>
+  <div class="background-opacity"></div>
   <div class="clock-bar">
     <div class="clock-bubble" id="clockBubble"></div>
   </div>
