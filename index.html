@@ -10,10 +10,37 @@
     body {
       margin: 0;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKQp8be02KSELSMtUVfAWA1_m3DNxD9gy-VA&usqp=CAU') center center / cover no-repeat fixed;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIX2Po5kF5iijkA2EwvexNEovbWV7o5Zet4lHhr_R2Y5wzWxiyll6qqM&s=10') center center / cover no-repeat fixed;
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+    }
+    .top-bar {
+      position: fixed;
+      top: 8px; left: 0;
+      width: 100vw;
+      display: flex;
+      justify-content: flex-end;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .clock-balloon {
+      background: rgba(255,255,255,0.35);
+      border-radius: 13px;
+      border: 1.2px solid #b9eaff;
+      box-shadow: 0 2px 8px #6ee4ff33;
+      font-size: 0.97em;
+      color: #0090bb;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      padding: 6px 18px 6px 18px;
+      margin-right: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
+      letter-spacing: 0.3px;
+      text-shadow: 0 1px 10px #fff, 0 1px 2px #00bfff44;
+      pointer-events: auto;
+      user-select: none;
     }
     .hai-rain {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -248,6 +275,21 @@
       margin-right: 4px;
       font-size: 1.02em;
     }
+    .comment .badge {
+      font-size: 0.8em;
+      background: #e3faff;
+      color: #0090bb;
+      border-radius: 7px;
+      padding: 2px 7px;
+      margin-right: 5px;
+      margin-left: 2px;
+      font-weight: 700;
+      opacity: 0.84;
+      letter-spacing: 0.2px;
+      box-shadow: 0 1px 6px #b9eaff33;
+      border: 1px solid #b9eaff;
+      text-shadow: 0 1px 6px #fff;
+    }
     .comment .delete-btn {
       background: #ff91b7;
       color: #fff;
@@ -262,6 +304,15 @@
       transition: background 0.13s;
     }
     .comment .delete-btn:hover { background: #d13079; }
+    .comment .timestamp {
+      color: #408bad;
+      font-size: 0.81em;
+      margin-left: 8px;
+      opacity: 0.76;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      text-shadow: 0 1px 7px #fff;
+    }
     .comment-form {
       width: 100%;
       display: flex;
@@ -306,6 +357,7 @@
       .profile-center img { width: 42px; height: 42px; }
       .notebook { min-width: 53vw; padding: 9px 6vw 10px 6vw;}
       .info-bubble { font-size: 1em;}
+      .top-bar .clock-balloon {margin-right: 4vw;}
     }
     .insta-list {
       display: flex;
@@ -331,6 +383,9 @@
   </style>
 </head>
 <body>
+  <div class="top-bar">
+    <div class="clock-balloon" id="clockBalloon"></div>
+  </div>
   <div class="hai-rain" id="haiRain"></div>
   <div class="container">
     <div class="bubble-row">
@@ -360,6 +415,24 @@
     </div>
   </div>
   <script>
+    // Türkiye saatini güncelle
+    function updateClockBalloon() {
+      const now = new Date();
+      // Türkiye UTC+3
+      const trOffset = new Date().getTimezoneOffset();
+      const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
+      const hh = trTime.getHours().toString().padStart(2,'0');
+      const mm = trTime.getMinutes().toString().padStart(2,'0');
+      const ss = trTime.getSeconds().toString().padStart(2,'0');
+      const day = trTime.getDate().toString().padStart(2,'0');
+      const month = (trTime.getMonth()+1).toString().padStart(2,'0');
+      const year = trTime.getFullYear();
+      document.getElementById('clockBalloon').textContent =
+        `Türkiye Saati: ${hh}:${mm}:${ss} • ${day}.${month}.${year}`;
+    }
+    updateClockBalloon();
+    setInterval(updateClockBalloon, 1000);
+
     // Hai! Rain effect
     function makeHaiRain() {
       const haiCount = 18;
@@ -425,7 +498,7 @@
       document.getElementById('notebookPopup').style.display = 'none';
     }
 
-    // Comments system (localStorage, name save, delete own only)
+    // Comments system (localStorage, name save, delete own only, admin/guest, timestamp)
     const commentsEl = document.getElementById('comments');
     const form = document.getElementById('commentForm');
     let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
@@ -440,7 +513,10 @@
         comments.forEach((c, idx) => {
           const el = document.createElement('div');
           el.className = 'comment';
-          el.innerHTML = `<span class="author">${c.author}</span> ${c.text}`;
+          let badgeText = '';
+          if(c.author.toLowerCase() === 'mimityph638') badgeText = '<span class="badge">admin</span>';
+          else badgeText = '<span class="badge">guest</span>';
+          el.innerHTML = `${badgeText}<span class="author">${c.author}</span> ${c.text} <span class="timestamp">${c.time}</span>`;
           // Sadece kendi adınla yazılmış yorumlarda silme butonu göster
           let authorInput = document.getElementById('author').value.trim();
           if(authorInput && c.author === authorInput) {
@@ -464,7 +540,18 @@
       const author = authorInput.value.trim();
       const text = document.getElementById('commentText').value.trim();
       if(author && text) {
-        comments.push({author, text});
+        // Saat ve tarih (Türkiye saati)
+        const now = new Date();
+        const trOffset = new Date().getTimezoneOffset();
+        const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
+        const hh = trTime.getHours().toString().padStart(2,'0');
+        const mm = trTime.getMinutes().toString().padStart(2,'0');
+        const ss = trTime.getSeconds().toString().padStart(2,'0');
+        const day = trTime.getDate().toString().padStart(2,'0');
+        const month = (trTime.getMonth()+1).toString().padStart(2,'0');
+        const year = trTime.getFullYear();
+        const timeString = `${day}.${month}.${year} ${hh}:${mm}:${ss}`;
+        comments.push({author, text, time: timeString});
         localStorage.setItem('blogComments', JSON.stringify(comments));
         localStorage.setItem('blogAuthor', author); // save name
         renderComments();
