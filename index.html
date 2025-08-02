@@ -50,7 +50,7 @@
       padding-bottom: 24px;
     }
     .container {
-      max-width: 270px;
+      max-width: 320px;
       background: rgba(255,255,255,0.23);
       border-radius: 19px;
       box-shadow: 0 4px 17px 0 rgba(31,38,135,0.13), 0 1px 11px #b9eaff44;
@@ -99,48 +99,76 @@
       box-shadow: 0 2px 13px #00bfff33;
       color: #37b7ff;
     }
+
+    /* PROFIL - solda büyük resim ve yukarıda ortalanmış isim */
+    .profile-center-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .profile-username-top {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 2px;
+      margin-top: 0;
+    }
+    .profile-username-top a {
+      text-decoration: none;
+      color: #00bfff;
+      font-weight: bold;
+      font-size: 1.23em;
+      display: inline-block;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
+      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
+      margin-bottom: 2px;
+      margin-top: 2px;
+    }
     .profile-center {
-      margin: 0 auto 0 auto;
       background: rgba(255,255,255,0.24);
       border-radius: 14px;
       border: 1.1px solid #bdbdbd;
       box-shadow: 0 1px 8px #b9eaff22;
-      padding: 15px 8px 11px 8px;
+      padding: 13px 8px 13px 8px;
       width: 98%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       font-size: 1em;
-      position: relative;
+      gap: 17px;
+      margin: 0 auto;
     }
     .profile-center img {
-      width: 40px; height: 40px;
+      width: 78px;
+      height: 78px;
       object-fit: cover;
-      border-radius: 10px;
-      border: 1.1px solid #00bfff;
+      border-radius: 15px;
+      border: 2.5px solid #00bfff;
       background: #caf0fa;
-      margin-bottom: 6px;
-      box-shadow: 0 2px 8px #a0eaff33;
+      box-shadow: 0 2px 18px #a0eaff44;
+      flex-shrink: 0;
+      display: block;
     }
-    .profile-center a {
-      text-decoration: none;
-      color: #00bfff;
-      font-weight: bold;
-      font-size: 1.09em;
-      margin-bottom: 1px;
-      word-break: break-all;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
+    .profile-texts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2px;
+      width: 100%;
     }
     .profile-center .bio {
       color: #408bad;
-      font-size: 0.93em;
+      font-size: 1em;
       font-style: italic;
       word-break: break-word;
       margin-top: 2px;
       margin-bottom: 2px;
     }
     .profile-center .small-desc {
-      font-size: 0.86em;
+      font-size: 0.93em;
       color: #0090bb;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       margin-top: 4px;
@@ -149,8 +177,9 @@
       font-weight: 700;
       letter-spacing: 0.2px;
     }
+
     .comments-balloon {
-      max-width: 270px;
+      max-width: 320px;
       margin: 16px auto 0 auto;
       background: rgba(255,255,255,0.20);
       border-radius: 11px;
@@ -168,36 +197,31 @@
       opacity: 0.96;
       position: relative;
     }
-    /* Clear Chat Butonu */
+    /* Çöp kutusu baloncuğu yok, arka plan yok, kenarlık yok */
     .clear-chat-btn {
       position: absolute;
-      top: 6px;
-      right: 7px;
+      top: 7px;
+      right: 8px;
       z-index: 3;
-      background: rgba(176,237,255,0.35);
-      color: #00bfff;
-      border: 1.2px solid #b9eaff;
-      border-radius: 50%;
-      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      font-size: 0.93em;
-      font-weight: bold;
-      width: 19px;
-      height: 19px;
+      background: none;
+      border: none;
+      font-size: 1.1em;
+      width: 22px;
+      height: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 1.5px 6px #b9eaff44;
       cursor: pointer;
-      opacity: 0.83;
-      transition: background 0.12s, color 0.12s, box-shadow 0.12s;
+      opacity: 0.77;
+      transition: opacity 0.14s, color 0.14s;
       outline: none;
-      text-shadow: 0 1px 6px #fff, 0 1px 2px #00bfff44;
+      color: #00bfff;
+      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
       padding: 0;
     }
     .clear-chat-btn:hover {
-      background: rgba(0, 191, 255, 0.22);
-      color: #fff;
-      box-shadow: 0 2px 10px #00bfff44;
+      opacity: 1;
+      color: #ff91b7;
     }
     .comments {
       width: 100%;
@@ -376,12 +400,12 @@
     }
     .popup-close:hover { opacity: 1; color: #ff91b7;}
     @media (max-width: 540px) {
-      .container, .comments-balloon {max-width: 95vw;}
+      .container, .comments-balloon {max-width: 97vw;}
       .popup-balloon {min-width: 37vw; padding: 5vw 2vw 6vw 2vw;}
       .info-bubble { font-size: 0.98em; min-width: 60px;}
-      .profile-center img { width: 30px; height: 30px; }
+      .profile-center img { width: 60px; height: 60px; }
       .clock-bubble { font-size: 1em; padding: 5px 5vw;}
-      .clear-chat-btn {width: 17px; height: 17px; font-size:0.90em;}
+      .clear-chat-btn {width: 18px; height: 18px; font-size:0.98em;}
     }
   </style>
 </head>
@@ -395,11 +419,17 @@
         <div class="info-bubble" onclick="showPopup('games')">Games ^~^</div>
         <div class="info-bubble" onclick="showPopup('bestfriends')">Bestfriends! ^w^</div>
       </div>
-      <div class="profile-center">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiN1w5nhVYPpivcdO1ZvneOqw5jFpon1XjCg&usqp=CAU" alt="Profile Picture">
-        <a href="https://instagram.com/M1miiqz.x1" target="_blank">@M1miiqz.x1</a>
-        <div class="bio">DogBoy</div>
-        <div class="small-desc">The only thing I know about myself is that I have no brain &gt;.&lt;</div>
+      <div class="profile-center-wrap">
+        <div class="profile-username-top">
+          <a href="https://instagram.com/m1miiqz.x1" target="_blank">@m1miiqz.x1</a>
+        </div>
+        <div class="profile-center">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiN1w5nhVYPpivcdO1ZvneOqw5jFpon1XjCg&usqp=CAU" alt="Profile Picture">
+          <div class="profile-texts">
+            <div class="bio">DogBoy</div>
+            <div class="small-desc">The only thing I know about myself is that I have no brain &gt;.&lt;</div>
+          </div>
+        </div>
       </div>
       <div class="comments-balloon">
         <button class="clear-chat-btn" title="Clear chat" onclick="clearChat()" aria-label="Clear chat">🗑️</button>
