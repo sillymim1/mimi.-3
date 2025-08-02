@@ -7,13 +7,64 @@
   <!-- Frutiger Aero font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
+      overflow: hidden; /* Scroll engellendi */
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
       background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIX2Po5kF5iijkA2EwvexNEovbWV7o5Zet4lHhr_R2Y5wzWxiyll6qqM&s=10') center center / cover no-repeat fixed;
       min-height: 100vh;
-      overflow-x: hidden;
+      min-width: 100vw;
+      overflow: hidden;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .background-opacity {
+      position: fixed;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background: rgba(255,255,255,0.15); /* %15 opaklık */
+    }
+    .center-wrap {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      /* Biraz yukarıda olması için: */
+      transform: translateY(-5%);
+      transition: transform 0.2s;
+    }
+    .container {
+      max-width: 370px;
+      width: 100%;
+      background: rgba(255,255,255,0.23);
+      border-radius: 19px;
+      box-shadow: 0 4px 17px 0 rgba(31,38,135,0.13), 0 1px 11px #b9eaff44;
+      border: 1.5px solid rgba(120,120,130,0.09);
+      padding: 12px 18px 16px 18px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      z-index: 2;
+      position: relative;
+      margin-top: 0;
     }
     .clock-bar {
       display: flex;
@@ -39,32 +90,6 @@
       min-width: 110px;
       text-align: center;
       opacity: 0.92;
-    }
-    .center-wrap {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding-top: 8px;
-      padding-bottom: 24px;
-    }
-    .container {
-      max-width: 370px;
-      width: 100%;
-      background: rgba(255,255,255,0.23);
-      border-radius: 19px;
-      box-shadow: 0 4px 17px 0 rgba(31,38,135,0.13), 0 1px 11px #b9eaff44;
-      border: 1.5px solid rgba(120,120,130,0.09);
-      padding: 12px 18px 16px 18px;
-      backdrop-filter: blur(6px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      z-index: 2;
-      position: relative;
-      margin-top: 0;
     }
     .bubble-row {
       width: 100%;
@@ -405,26 +430,15 @@
       .clock-bubble { font-size: 1em; padding: 5px 5vw;}
       .clear-chat-btn {width: 15px; height: 15px; font-size:0.85em;}
     }
-    /* ---- ARKA PLAN SEFFAFLIK KATMANI ---- */
-    .background-opacity {
-      position: fixed;
-      z-index: 0;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      background: rgba(255,255,255,0.15); /* %15 opaklık */
-    }
   </style>
 </head>
 <body>
   <div class="background-opacity"></div>
-  <div class="clock-bar">
-    <div class="clock-bubble" id="clockBubble"></div>
-  </div>
   <div class="center-wrap">
     <div class="container">
+      <div class="clock-bar">
+        <div class="clock-bubble" id="clockBubble"></div>
+      </div>
       <div class="bubble-row">
         <div class="info-bubble" onclick="showPopup('games')">Games ^~^</div>
         <div class="info-bubble" onclick="showPopup('bestfriends')">Bestfriends! ^w^</div>
