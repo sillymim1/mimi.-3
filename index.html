@@ -166,23 +166,23 @@
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       font-size: 0.97em;
       opacity: 0.96;
-      position: relative; /* <-- eklendi */
+      position: relative;
     }
     /* Clear Chat Butonu */
     .clear-chat-btn {
       position: absolute;
-      top: 7px;
-      right: 8px;
+      top: 6px;
+      right: 7px;
       z-index: 3;
-      background: rgba(176,237,255,0.35); /* %35 şeffaf, frutiger aero renkleri */
+      background: rgba(176,237,255,0.35);
       color: #00bfff;
       border: 1.2px solid #b9eaff;
       border-radius: 50%;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      font-size: 1.04em;
+      font-size: 0.93em;
       font-weight: bold;
-      width: 22px;
-      height: 22px;
+      width: 19px;
+      height: 19px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -192,13 +192,13 @@
       transition: background 0.12s, color 0.12s, box-shadow 0.12s;
       outline: none;
       text-shadow: 0 1px 6px #fff, 0 1px 2px #00bfff44;
+      padding: 0;
     }
     .clear-chat-btn:hover {
       background: rgba(0, 191, 255, 0.22);
       color: #fff;
       box-shadow: 0 2px 10px #00bfff44;
     }
-
     .comments {
       width: 100%;
       display: flex;
@@ -381,7 +381,7 @@
       .info-bubble { font-size: 0.98em; min-width: 60px;}
       .profile-center img { width: 30px; height: 30px; }
       .clock-bubble { font-size: 1em; padding: 5px 5vw;}
-      .clear-chat-btn {width: 20px; height: 20px; font-size:0.99em;}
+      .clear-chat-btn {width: 17px; height: 17px; font-size:0.90em;}
     }
   </style>
 </head>
@@ -402,7 +402,7 @@
         <div class="small-desc">The only thing I know about myself is that I have no brain &gt;.&lt;</div>
       </div>
       <div class="comments-balloon">
-        <button class="clear-chat-btn" title="Clear chat" onclick="clearChat()" aria-label="Clear chat">✕</button>
+        <button class="clear-chat-btn" title="Clear chat" onclick="clearChat()" aria-label="Clear chat">🗑️</button>
         <div class="comments" id="comments"></div>
         <form class="comment-form" id="commentForm">
           <input type="text" id="author" placeholder="Your Name" required maxlength="24">
