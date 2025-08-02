@@ -136,92 +136,113 @@
       font-weight: 700;
       letter-spacing: 0.2px;
     }
-    .notebook-popup {
-      position: fixed;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.13);
-      backdrop-filter: blur(2px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99;
-      animation: fadeIn 0.4s;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0;}
-      to { opacity: 1;}
-    }
-    .notebook {
+    .comments-balloon {
+      max-width: 330px;
+      margin: 22px auto 0 auto;
       background: rgba(255,255,255,0.35);
-      border-radius: 21px;
-      border: 2px solid #96e2ff;
-      box-shadow: 0 0 22px #a6eaff66, 0 0 0 #fff;
-      padding: 18px 24px 15px 24px;
-      min-width: 135px;
-      max-width: 95vw;
-      position: relative;
-      text-align: center;
-      font-size: 1.09em;
-      color: #37b7ff;
-      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      border-radius: 13px;
+      border: 1.1px solid #bdbdbd;
+      box-shadow: 0 1px 8px rgba(100,100,110,0.13);
+      padding: 13px 13px 13px 13px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      gap: 10px;
       box-sizing: border-box;
-      animation: popin 0.3s;
-      filter: drop-shadow(0 0 18px #b2faff88);
-      overflow: hidden;
+      z-index: 2;
     }
-    @keyframes popin {
-      from { transform: scale(0.7);}
-      to { transform: scale(1);}
+    .comments {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 3px;
     }
-    .notebook-heart {
-      font-size: 2em;
-      margin-bottom: 10px;
-      margin-top: -7px;
-      color: #ff91b7;
-      animation: notebookGlow 1.2s infinite alternate;
-      text-shadow: 0 0 18px #ff91b7, 0 0 8px #fff, 0 2px 12px #fff;
-      filter: blur(0.15px) brightness(1.12);
+    .comment {
+      background: rgba(200,200,200,0.23);
+      border-radius: 5px;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.10);
+      padding: 4px 7px 4px 7px;
+      font-size: 0.99em;
+      word-break: break-word;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
     }
-    @keyframes notebookGlow {
-      0% { text-shadow: 0 0 10px #ff91b7, 0 0 3px #fff;}
-      100% { text-shadow: 0 0 23px #ff91b7, 0 0 9px #fff;}
+    .comment .author {
+      font-weight: bold;
+      color: #00bfff;
+      margin-right: 4px;
+      font-size: 1.02em;
     }
-    .notebook-content {
-      font-size: 1.05em;
+    .comment .badge {
+      font-size: 0.8em;
+      background: #e3faff;
       color: #0090bb;
+      border-radius: 7px;
+      padding: 2px 7px;
+      margin-right: 5px;
+      margin-left: 2px;
+      font-weight: 700;
+      opacity: 0.84;
+      letter-spacing: 0.2px;
+      box-shadow: 0 1px 6px #b9eaff33;
+      border: 1px solid #b9eaff;
+      text-shadow: 0 1px 6px #fff;
+    }
+    .comment .timestamp {
+      color: #408bad;
+      font-size: 0.81em;
+      margin-left: 8px;
+      opacity: 0.76;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       font-weight: 700;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
-      margin-bottom: 7px;
-      margin-top: 2px;
-      padding: 2px 0;
-      line-height: 1.5em;
+      text-shadow: 0 1px 7px #fff;
     }
-    .notebook-close {
-      position: absolute;
-      top: 13px; right: 18px;
-      background: none;
-      font-size: 1.25em;
-      color: #37b7ff;
+    .comment-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(255,255,255,0.23);
+      border-radius: 7px;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.08);
+      padding: 7px 6px 7px 6px;
+      margin-top: 0;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    .comment-form input, .comment-form textarea {
+      font-family: inherit;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #00bfff;
+      padding: 5px 8px;
+      background: rgba(255,255,255,0.4);
+      resize: none;
+      outline: none;
+    }
+    .comment-form button {
+      background: #00bfff;
+      color: #fff;
       border: none;
-      cursor: pointer;
+      border-radius: 5px;
+      padding: 7px 0;
       font-weight: bold;
-      opacity: 0.7;
-      text-shadow: 0 1px 10px #fff;
-      transition: color 0.13s;
+      cursor: pointer;
+      font-size: 1em;
+      box-shadow: 0 1px 4px #00bfff33;
+      transition: background 0.13s;
     }
-    .notebook-close:hover { opacity: 1; color: #ff91b7;}
+    .comment-form button:hover {
+      background: #0080c0;
+    }
     @media (max-width: 540px) {
-      .container {max-width: 98vw;}
+      .container, .comments-balloon {max-width: 98vw;}
       .profile-center img { width: 42px; height: 42px; }
-      .notebook { min-width: 53vw; padding: 9px 6vw 10px 6vw;}
       .info-bubble { font-size: 1em;}
       .clock-bar {top: 4vw; font-size: 0.97em;}
       .center-wrap {padding-top: 60px;}
@@ -262,6 +283,14 @@
         <a href="https://instagram.com/M1miiqz.x1" target="_blank">@M1miiqz.x1</a>
         <div class="bio">Pixel DogBoy</div>
         <div class="small-desc">The only thing I know about myself is that I have no brain &gt;.&lt;</div>
+      </div>
+      <div class="comments-balloon">
+        <div class="comments" id="comments"></div>
+        <form class="comment-form" id="commentForm">
+          <input type="text" id="author" placeholder="Your Name" required maxlength="24">
+          <textarea id="commentText" rows="2" placeholder="Your message..." required maxlength="180"></textarea>
+          <button type="submit">Send</button>
+        </form>
       </div>
     </div>
   </div>
@@ -319,6 +348,56 @@
     function closeNotebook(e) {
       document.getElementById('notebookPopup').style.display = 'none';
     }
+
+    // Comments (no delete)
+    const commentsEl = document.getElementById('comments');
+    const form = document.getElementById('commentForm');
+    let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
+    let savedAuthor = localStorage.getItem('blogAuthor') || "";
+    document.getElementById('author').value = savedAuthor;
+
+    function renderComments() {
+      commentsEl.innerHTML = '';
+      if(comments.length === 0) {
+        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:0.98em;padding:7px;">No comments yet. Be the first!</div>';
+      } else {
+        comments.forEach((c) => {
+          const el = document.createElement('div');
+          el.className = 'comment';
+          let badgeText = '';
+          if(c.author.toLowerCase() === 'mimityph638') badgeText = '<span class="badge">admin</span>';
+          else badgeText = '<span class="badge">guest</span>';
+          el.innerHTML = `${badgeText}<span class="author">${c.author}</span> ${c.text} <span class="timestamp">${c.time}</span>`;
+          commentsEl.appendChild(el);
+        });
+      }
+    }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const authorInput = document.getElementById('author');
+      const author = authorInput.value.trim();
+      const text = document.getElementById('commentText').value.trim();
+      if(author && text) {
+        // Saat ve tarih (Türkiye saati)
+        const now = new Date();
+        const trOffset = new Date().getTimezoneOffset();
+        const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
+        const hh = trTime.getHours().toString().padStart(2,'0');
+        const mm = trTime.getMinutes().toString().padStart(2,'0');
+        const ss = trTime.getSeconds().toString().padStart(2,'0');
+        const day = trTime.getDate().toString().padStart(2,'0');
+        const month = (trTime.getMonth()+1).toString().padStart(2,'0');
+        const year = trTime.getFullYear();
+        const timeString = `${day}.${month}.${year} ${hh}:${mm}:${ss}`;
+        comments.push({author, text, time: timeString});
+        localStorage.setItem('blogComments', JSON.stringify(comments));
+        localStorage.setItem('blogAuthor', author); // save name
+        renderComments();
+        form.reset();
+        authorInput.value = author; // restore name
+      }
+    });
+    renderComments();
   </script>
 </body>
 </html>
