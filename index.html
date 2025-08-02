@@ -14,25 +14,24 @@
       overflow-x: hidden;
     }
     .container {
-      max-width: 260px;
-      margin: 38px auto 15px auto;
-      background: rgba(190,190,190,0.13);
-      border-radius: 10px;
-      box-shadow: 0 4px 16px 0 rgba(31,38,135,0.08);
-      border: 1.3px solid rgba(120,120,130,0.12);
-      padding: 10px 10px 15px 10px;
+      max-width: 270px;
+      margin: 38px auto 0 auto;
+      background: rgba(190,190,190,0.14);
+      border-radius: 12px;
+      box-shadow: 0 4px 14px 0 rgba(31,38,135,0.11);
+      border: 1.2px solid rgba(120,120,130,0.13);
+      padding: 11px 10px 13px 10px;
       backdrop-filter: blur(4px);
-      z-index: 10;
-      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      align-items: center;
+      gap: 13px;
     }
     .about-btn {
       display: block;
       margin: 0 auto 0 auto;
       padding: 4px 9px;
-      font-size: 0.92em;
+      font-size: 0.90em;
       font-weight: 700;
       background: #00bfff;
       color: #fff;
@@ -41,48 +40,53 @@
       box-shadow: 0 2px 8px #00bfff22;
       cursor: pointer;
       letter-spacing: 1px;
-      margin-bottom: 1px;
-      transition: background 0.11s;
+      margin-bottom: 3px;
+      transition: background 0.12s;
     }
     .about-btn:hover { background: #0080c0; }
     .profile {
       display: flex;
       align-items: center;
-      gap: 7px;
-      background: rgba(255,255,255,0.7);
-      border-radius: 5px;
+      gap: 8px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 7px;
       border: 1.2px solid #bdbdbd;
-      box-shadow: 0 1px 5px rgba(100,100,110,0.05);
-      padding: 5px 6px 5px 5px;
-      font-size: 0.93em;
+      box-shadow: 0 1px 6px rgba(100,100,110,0.05);
+      padding: 6px 8px 6px 7px;
+      font-size: 0.95em;
+      width: 100%;
+      box-sizing: border-box;
     }
     .profile img {
-      width: 24px; height: 24px;
+      width: 26px; height: 26px;
       object-fit: cover;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1.5px solid #00bfff;
       background: #caf0fa;
     }
     .profile-info {
       flex: 1;
       font-size: 0.93em;
+      min-width: 0;
     }
     .profile-info a {
       text-decoration: none;
       color: #00bfff;
       font-weight: bold;
-      font-size: 0.93em;
+      font-size: 0.95em;
       display: block;
       margin-bottom: 1px;
+      word-break: break-all;
     }
     .profile-info .bio {
       color: #408bad;
-      font-size: 0.88em;
+      font-size: 0.89em;
       font-style: italic;
+      word-break: break-word;
     }
     .music-btn {
       display: block;
-      margin: 7px auto 12px auto;
+      margin: 7px auto 3px auto;
       padding: 4px 13px;
       font-size: 0.93em;
       font-weight: 600;
@@ -98,74 +102,18 @@
     .music-btn:hover { background: #caf0fa;}
     .saywhatever {
       text-align: center;
-      font-size: 0.92em;
+      font-size: 0.93em;
       font-weight: 600;
       color: #0090bb;
-      background: rgba(255,255,255,0.68);
+      background: rgba(255,255,255,0.7);
       border-radius: 4px;
-      border: 1.1px solid #bdbdbd;
+      border: 1px solid #bdbdbd;
       box-shadow: 0 1px 4px rgba(100,100,110,0.04);
       padding: 5px 0 4px 0;
       margin-bottom: 2px;
       letter-spacing: 0.5px;
-    }
-    .comments {
-      margin-bottom: 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .comment {
-      background: rgba(200,200,200,0.38);
-      border-radius: 4px;
-      border: 1.2px solid #bdbdbd;
-      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
-      padding: 4px 5px 4px 5px;
-      font-size: 0.92em;
-      word-break: break-word;
-    }
-    .comment .author {
-      font-weight: bold;
-      color: #00bfff;
-      margin-right: 4px;
-      font-size: 0.95em;
-    }
-    .comment-form {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      background: rgba(255,255,255,0.7);
-      border-radius: 4px;
-      border: 1.2px solid #bdbdbd;
-      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
-      padding: 5px 3px 5px 3px;
-      margin-top: 0;
-      font-size: 0.92em;
-    }
-    .comment-form input, .comment-form textarea {
-      font-family: inherit;
-      font-size: 0.92em;
-      border-radius: 4px;
-      border: 1px solid #00bfff;
-      padding: 4px 6px;
-      background: rgba(255,255,255,0.5);
-      resize: none;
-      outline: none;
-    }
-    .comment-form button {
-      background: #00bfff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 4px 0;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.93em;
-      box-shadow: 0 1px 4px #00bfff33;
-      transition: background 0.13s;
-    }
-    .comment-form button:hover {
-      background: #0080c0;
+      width: 100%;
+      box-sizing: border-box;
     }
     /* Notebook popup */
     .notebook-popup {
@@ -232,8 +180,85 @@
       opacity: 0.7;
     }
     .notebook-close:hover { opacity: 1; color: #a00;}
+    /* Comments section balloon */
+    .comments-balloon {
+      width: 100%;
+      background: rgba(255,255,255,0.78);
+      border-radius: 9px;
+      border: 1.2px solid #bdbdbd;
+      box-shadow: 0 1px 7px rgba(100,100,110,0.07);
+      padding: 10px 7px 10px 7px;
+      margin-top: 30px;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      box-sizing: border-box;
+    }
+    .comments {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 5px;
+    }
+    .comment {
+      background: rgba(200,200,200,0.38);
+      border-radius: 4px;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
+      padding: 4px 5px 4px 5px;
+      font-size: 0.92em;
+      word-break: break-word;
+    }
+    .comment .author {
+      font-weight: bold;
+      color: #00bfff;
+      margin-right: 4px;
+      font-size: 0.95em;
+    }
+    .comment-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 4px;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
+      padding: 7px 4px 7px 4px;
+      margin-top: 0;
+      font-size: 0.92em;
+      box-sizing: border-box;
+    }
+    .comment-form input, .comment-form textarea {
+      font-family: inherit;
+      font-size: 0.92em;
+      border-radius: 4px;
+      border: 1px solid #00bfff;
+      padding: 4px 6px;
+      background: rgba(255,255,255,0.5);
+      resize: none;
+      outline: none;
+    }
+    .comment-form button {
+      background: #00bfff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 0;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.93em;
+      box-shadow: 0 1px 4px #00bfff33;
+      transition: background 0.13s;
+    }
+    .comment-form button:hover {
+      background: #0080c0;
+    }
     @media (max-width: 540px) {
-      .container {max-width: 96vw; margin: 7px 2vw;}
+      .container, .comments-balloon {max-width: 96vw; margin: 7px 2vw;}
       .profile img { width: 17px; height: 17px; }
       .notebook { min-width: 43vw; padding: 8px 7vw 9px 7vw;}
     }
@@ -252,8 +277,10 @@
         <div class="bio">Pixel DogBoy</div>
       </div>
     </div>
-    <div style="height:22px;"></div>
     <div class="saywhatever">say whatever u want :3</div>
+  </div>
+  <!-- Comments section balloon at bottom -->
+  <div class="comments-balloon">
     <div class="comments" id="comments"></div>
     <form class="comment-form" id="commentForm">
       <input type="text" id="author" placeholder="Your Name" required maxlength="24">
