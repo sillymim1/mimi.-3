@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mimi's Frutiger Aero Blog</title>
+  <title>Mimi Frutiger Aero Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Frutiger Aero benzeri font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
@@ -10,46 +10,24 @@
     body {
       margin: 0;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      min-height: 100vh;
       background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKQp8be02KSELSMtUVfAWA1_m3DNxD9gy-VA&usqp=CAU') center center / cover no-repeat fixed;
+      min-height: 100vh;
       overflow-x: hidden;
       position: relative;
     }
-    /* Hai! rain effect */
-    .hai-rain {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hai-drop {
-      position: absolute;
-      color: #00bfff;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-weight: 700;
-      font-size: 1.5em;
-      opacity: 0.75;
-      text-shadow: 0 2px 8px #00bfff80, 0 0px 2px #fff;
-      pointer-events: none;
-      filter: blur(0.5px);
-      user-select: none;
-      will-change: transform;
-      transition: opacity 0.3s;
-    }
-    /* Main layout */
     .container {
-      max-width: 295px;
-      margin: 38px auto 0 auto;
-      background: rgba(190,190,190,0.14);
+      max-width: 220px;
+      margin: 24px auto 0 auto;
+      background: rgba(255,255,255,0.35);
       border-radius: 13px;
-      box-shadow: 0 4px 14px 0 rgba(31,38,135,0.11);
-      border: 1.2px solid rgba(120,120,130,0.13);
-      padding: 11px 10px 11px 10px;
+      box-shadow: 0 4px 14px 0 rgba(31,38,135,0.17);
+      border: 1.2px solid rgba(120,120,130,0.12);
+      padding: 9px 8px 9px 8px;
       backdrop-filter: blur(4px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       z-index: 2;
       position: relative;
     }
@@ -57,53 +35,401 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      gap: 11px;
-      margin-bottom: 10px;
+      gap: 7px;
+      margin-bottom: 5px;
     }
     .info-bubble {
       flex: 1;
       text-align: center;
-      background: linear-gradient(140deg,#e3faff 45%,#c1e3ff 100%);
-      border-radius: 12px;
-      border: 1.6px solid #b9eaff;
-      box-shadow: 0 4px 12px #6ee4ff33;
-      padding: 7px 3px 7px 3px;
-      font-size: 0.93em;
+      background: rgba(255,255,255,0.35);
+      border-radius: 10px;
+      border: 1.2px solid #b9eaff;
+      box-shadow: 0 2px 8px #6ee4ff33;
+      padding: 5px 2px 5px 2px;
+      font-size: 0.81em;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       font-weight: 700;
       color: #0090bb;
       cursor: pointer;
       transition: background 0.14s, box-shadow 0.14s;
       user-select: none;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
-      border-bottom: 2.7px solid #96e2ff;
+      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff44;
+      border-bottom: 2px solid #96e2ff;
     }
-    .info-bubble:hover { background: #e6f7ff; box-shadow: 0 2px 16px #00bfff44;}
-    /* Instagram profile center */
+    .info-bubble:hover { background: rgba(230,247,255,0.35); box-shadow: 0 2px 12px #00bfff44;}
     .profile-center {
       margin: 0 auto 0 auto;
-      background: linear-gradient(120deg,#f8fcff 70%,#d7f7ff 100%);
-      border-radius: 14px;
-      border: 1.7px solid #bdbdbd;
-      box-shadow: 0 1px 8px #b9eaff55;
-      padding: 11px 10px 10px 10px;
-      width: 88%;
+      background: rgba(255,255,255,0.35);
+      border-radius: 12px;
+      border: 1.2px solid #bdbdbd;
+      box-shadow: 0 1px 7px #b9eaff44;
+      padding: 8px 6px 7px 6px;
+      width: 92%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 1em;
+      font-size: 0.94em;
       position: relative;
     }
     .profile-center img {
-      width: 46px; height: 46px;
+      width: 28px; height: 28px;
       object-fit: cover;
-      border-radius: 9px;
-      border: 2px solid #00bfff;
+      border-radius: 8px;
+      border: 1.2px solid #00bfff;
       background: #caf0fa;
-      margin-bottom: 7px;
-      box-shadow: 0 5px 16px #a0eaff55;
+      margin-bottom: 5px;
+      box-shadow: 0 2px 8px #a0eaff55;
     }
     .profile-center a {
+      text-decoration: none;
+      color: #00bfff;
+      font-weight: bold;
+      font-size: 0.92em;
+      margin-bottom: 2px;
+      word-break: break-all;
+      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff44;
+    }
+    .profile-center .bio {
+      color: #408bad;
+      font-size: 0.89em;
+      font-style: italic;
+      word-break: break-word;
+      margin-top: 1px;
+      margin-bottom: 3px;
+    }
+    .profile-center .small-desc {
+      font-size: 0.73em;
+      color: #0090bb;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      margin-top: 2px;
+      opacity: 0.78;
+      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff44;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .notebook-popup {
+      position: fixed;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.13);
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    .notebook {
+      background: rgba(255,255,255,0.35);
+      border-radius: 19px;
+      border: 2px solid #96e2ff;
+      box-shadow: 0 0 18px #a6eaff66, 0 0 0 #fff;
+      padding: 13px 15px 11px 15px;
+      min-width: 110px;
+      max-width: 93vw;
+      position: relative;
+      text-align: center;
+      font-size: 0.95em;
+      color: #37b7ff;
+      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      animation: popin 0.3s;
+      filter: drop-shadow(0 0 18px #b2faff88);
+      overflow: hidden;
+    }
+    @keyframes popin {
+      from { transform: scale(0.7);}
+      to { transform: scale(1);}
+    }
+    .notebook-heart {
+      font-size: 1.5em;
+      margin-bottom: 6px;
+      margin-top: -3px;
+      color: #ff91b7;
+      animation: notebookGlow 1.2s infinite alternate;
+      text-shadow: 0 0 10px #ff91b7, 0 0 5px #fff;
+      filter: blur(0.15px) brightness(1.08);
+    }
+    @keyframes notebookGlow {
+      0% { text-shadow: 0 0 10px #ff91b7, 0 0 3px #fff;}
+      100% { text-shadow: 0 0 22px #ff91b7, 0 0 7px #fff;}
+    }
+    .notebook-content {
+      font-size: 0.93em;
+      color: #0090bb;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff44;
+      margin-bottom: 4px;
+      margin-top: 2px;
+      padding: 2px 0;
+      line-height: 1.4em;
+    }
+    .notebook-close {
+      position: absolute;
+      top: 8px; right: 12px;
+      background: none;
+      font-size: 1em;
+      color: #37b7ff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      opacity: 0.7;
+      text-shadow: 0 1px 7px #fff;
+      transition: color 0.13s;
+    }
+    .notebook-close:hover { opacity: 1; color: #ff91b7;}
+    .comments-balloon {
+      width: 100%;
+      background: rgba(255,255,255,0.35);
+      border-radius: 10px;
+      border: 1.1px solid #bdbdbd;
+      box-shadow: 0 1px 6px rgba(100,100,110,0.13);
+      padding: 8px 7px 7px 7px;
+      margin: 20px auto 6px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+    .comments {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 3px;
+    }
+    .comment {
+      background: rgba(200,200,200,0.23);
+      border-radius: 4px;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 1px 3px rgba(100,100,110,0.10);
+      padding: 3px 5px 3px 5px;
+      font-size: 0.83em;
+      word-break: break-word;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .comment .author {
+      font-weight: bold;
+      color: #00bfff;
+      margin-right: 3px;
+      font-size: 0.88em;
+    }
+    .comment .delete-btn {
+      background: #ff91b7;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.69em;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 1px 7px 1px 7px;
+      margin-left: 6px;
+      box-shadow: 0 1px 3px #ff91b733;
+      transition: background 0.13s;
+    }
+    .comment .delete-btn:hover { background: #d13079; }
+    .comment-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: rgba(255,255,255,0.23);
+      border-radius: 5px;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 1px 3px rgba(100,100,110,0.08);
+      padding: 5px 3px 5px 3px;
+      margin-top: 0;
+      font-size: 0.81em;
+      box-sizing: border-box;
+    }
+    .comment-form input, .comment-form textarea {
+      font-family: inherit;
+      font-size: 0.83em;
+      border-radius: 4px;
+      border: 1px solid #00bfff;
+      padding: 3px 6px;
+      background: rgba(255,255,255,0.4);
+      resize: none;
+      outline: none;
+    }
+    .comment-form button {
+      background: #00bfff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 0;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.84em;
+      box-shadow: 0 1px 3px #00bfff33;
+      transition: background 0.13s;
+    }
+    .comment-form button:hover {
+      background: #0080c0;
+    }
+    @media (max-width: 540px) {
+      .container, .comments-balloon {max-width: 94vw; margin: 7px 2vw;}
+      .profile-center img { width: 22px; height: 22px; }
+      .notebook { min-width: 40vw; padding: 6px 3vw 7px 3vw;}
+      .info-bubble { font-size: 0.80em;}
+    }
+    /* Instagram list in bestfriends bubble */
+    .insta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+      margin: 9px 0 0 0;
+    }
+    .insta-list a {
+      color: #37b7ff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.89em;
+      background: #e6f7ff;
+      padding: 3px 7px;
+      border-radius: 7px;
+      transition: background 0.2s;
+      display: inline-block;
+      box-shadow: 0 0 6px #b9eaff44;
+      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff44;
+    }
+    .insta-list a:hover { background: #caf0fa;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="bubble-row">
+      <div class="info-bubble" onclick="showNotebook('games')">Game Names</div>
+      <div class="info-bubble" onclick="showNotebook('bestfriends')">Bestfriends! ^w^</div>
+      <div class="info-bubble" onclick="showNotebook('empty')">Empty Bubble</div>
+    </div>
+    <div class="profile-center">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXNDm6kNGAZzoyGCG9pzDyfl3yEB7i6diIJVVcd29pA&s" alt="Profile Picture">
+      <a href="https://instagram.com/M1miiqz.x1" target="_blank">@M1miiqz.x1</a>
+      <div class="bio">Pixel DogBoy</div>
+      <div class="small-desc">The only thing I know about myself is that I have no brain &gt;.&lt;</div>
+    </div>
+  </div>
+  <!-- Comments section balloon at bottom -->
+  <div class="comments-balloon">
+    <div class="comments" id="comments"></div>
+    <form class="comment-form" id="commentForm">
+      <input type="text" id="author" placeholder="Your Name" required maxlength="24">
+      <textarea id="commentText" rows="2" placeholder="Your message..." required maxlength="180"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <!-- Notebook popup -->
+  <div id="notebookPopup" style="display:none;">
+    <div class="notebook-popup" onclick="closeNotebook(event)">
+      <div class="notebook" id="notebookContent" onclick="event.stopPropagation();"></div>
+    </div>
+  </div>
+  <script>
+    // Notebook popup dynamic content
+    function showNotebook(type) {
+      let content = '';
+      if(type === 'games') {
+        content = `<div class="notebook-heart">🎮</div>
+          <div class="notebook-content">
+            <span style="font-size:0.93em; color:#0090bb; font-family:'Quicksand';">Roblox:</span> <span style="color:#37b7ff;font-weight:bold;">boreas1709</span><br>
+            <span style="font-size:0.93em; color:#0090bb; font-family:'Quicksand';">War Thunder Mobile:</span> <span style="color:#37b7ff;font-weight:bold;">Yukarı Akiyama</span><br>
+            <span style="font-size:0.93em; color:#0090bb; font-family:'Quicksand';">Minecraft:</span> <span style="color:#37b7ff;font-weight:bold;">VeXa8758</span>
+          </div>`;
+      } else if(type === 'bestfriends') {
+        content = `<div class="notebook-heart">✨</div>
+          <div class="notebook-content">
+            My Instagram bestfriends:
+            <div class="insta-list" style="margin-top:6px;">
+              <a href="https://instagram.com/y0n6qz.t" target="_blank">@y0n6qz.t</a>
+              <a href="https://instagram.com/cinar.d138" target="_blank">@cinar.d138</a>
+              <a href="https://instagram.com/rainbows._.dashie" target="_blank">@rainbows._.dashie</a>
+              <a href="https://instagram.com/kris.sirg" target="_blank">@kris.sirg</a>
+            </div>
+          </div>`;
+      } else {
+        content = `<div class="notebook-heart">☁️</div>
+          <div class="notebook-content">
+            This bubble is empty!
+          </div>`;
+      }
+      document.getElementById('notebookContent').innerHTML =
+         `<button class="notebook-close" onclick="closeNotebook(event)" title="Close">&times;</button>
+         ${content}`;
+      document.getElementById('notebookPopup').style.display = 'block';
+    }
+    function closeNotebook(e) {
+      document.getElementById('notebookPopup').style.display = 'none';
+    }
+
+    // Comments system (localStorage, name save, delete own only)
+    const commentsEl = document.getElementById('comments');
+    const form = document.getElementById('commentForm');
+    let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
+    let savedAuthor = localStorage.getItem('blogAuthor') || "";
+    document.getElementById('author').value = savedAuthor;
+
+    function renderComments() {
+      commentsEl.innerHTML = '';
+      if(comments.length === 0) {
+        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:0.85em;padding:4px;">No comments yet. Be the first!</div>';
+      } else {
+        comments.forEach((c, idx) => {
+          const el = document.createElement('div');
+          el.className = 'comment';
+          el.innerHTML = `<span class="author">${c.author}</span> ${c.text}`;
+          // Sadece kendi adınla yazılmış yorumlarda silme butonu göster
+          let authorInput = document.getElementById('author').value.trim();
+          if(authorInput && c.author === authorInput) {
+            const btn = document.createElement('button');
+            btn.className = 'delete-btn';
+            btn.textContent = 'Sil';
+            btn.onclick = function() {
+              comments.splice(idx, 1);
+              localStorage.setItem('blogComments', JSON.stringify(comments));
+              renderComments();
+            };
+            el.appendChild(btn);
+          }
+          commentsEl.appendChild(el);
+        });
+      }
+    }
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const authorInput = document.getElementById('author');
+      const author = authorInput.value.trim();
+      const text = document.getElementById('commentText').value.trim();
+      if(author && text) {
+        comments.push({author, text});
+        localStorage.setItem('blogComments', JSON.stringify(comments));
+        localStorage.setItem('blogAuthor', author); // save name
+        renderComments();
+        form.reset();
+        authorInput.value = author; // restore name
+      }
+    });
+    renderComments();
+  </script>
+</body>
+</html>    .profile-center a {
       text-decoration: none;
       color: #00bfff;
       font-weight: bold;
