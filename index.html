@@ -14,6 +14,7 @@
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+      padding-bottom: 160px; /* Alttaki video için alan bırakır */
     }
     .clock-bar {
       display: flex;
@@ -46,17 +47,17 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding-top: 8px;       /* Eskiden 22px idi, yukarı çekildi */
+      padding-top: 8px;
       padding-bottom: 24px;
     }
     .container {
-      max-width: 370px;      /* Eskiden 320px idi, genişletildi */
+      max-width: 370px;
       width: 100%;
       background: rgba(255,255,255,0.23);
       border-radius: 19px;
       box-shadow: 0 4px 17px 0 rgba(31,38,135,0.13), 0 1px 11px #b9eaff44;
       border: 1.5px solid rgba(120,120,130,0.09);
-      padding: 12px 18px 16px 18px; /* biraz daha içten daraltıldı */
+      padding: 12px 18px 16px 18px;
       backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
@@ -64,7 +65,7 @@
       gap: 16px;
       z-index: 2;
       position: relative;
-      margin-top: 0;         /* gereksiz boşluğu kaldırır */
+      margin-top: 0;
     }
     .bubble-row {
       width: 100%;
@@ -178,8 +179,8 @@
       letter-spacing: 0.2px;
     }
     .comments-balloon {
-      max-width: 370px;      /* Eskiden 320 idi */
-      margin: 3px auto 0 auto;  /* iyice yukarıda */
+      max-width: 370px;
+      margin: 3px auto 0 auto;
       background: rgba(255,255,255,0.20);
       border-radius: 11px;
       border: 1px solid #bdbdbd;
@@ -198,7 +199,7 @@
     }
     .clear-chat-btn {
       position: absolute;
-      top: 2px;   /* Daha yukarıda */
+      top: 2px;
       right: 8px;
       z-index: 3;
       background: none;
@@ -310,93 +311,81 @@
     .comment-form button:hover {
       background: #0080c0;
     }
-    /* Popup glass effect */
-    .popup-bg {
+
+    /* Retro Windows Media Player Video Efekti */
+    .retro-video-wrap {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
       position: fixed;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.04);
-      backdrop-filter: blur(2px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99;
-      animation: fadeIn 0.4s;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0;}
-      to { opacity: 1;}
-    }
-    .popup-balloon {
-      background: rgba(255,255,255,0.15);
-      border-radius: 15px;
-      border: 1.2px solid #96e2ff;
-      box-shadow: 0 0 14px #a6eaff44, 0 0 0 #fff;
-      padding: 15px 19px 10px 19px;
-      min-width: 80px;
-      max-width: 78vw;
-      position: relative;
-      text-align: center;
-      font-size: 1em;
-      color: #0090bb;
-      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      animation: popin 0.3s;
-      filter: drop-shadow(0 0 9px #b2faff44);
-      overflow: hidden;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff33, 0 0 8px #bdf7ff44;
-      opacity: 0.97;
-      backdrop-filter: blur(8px);
-    }
-    @keyframes popin {
-      from { transform: scale(0.7);}
-      to { transform: scale(1);}
-    }
-    .popup-heart {
-      font-size: 1.18em;
-      margin-bottom: 7px;
-      margin-top: -2px;
-      color: #ff91b7;
-      animation: popupGlow 1.2s infinite alternate;
-      text-shadow: 0 0 11px #ff91b7, 0 0 4px #fff, 0 2px 7px #fff;
-      filter: blur(0.13px) brightness(1.07);
-    }
-    @keyframes popupGlow {
-      0% { text-shadow: 0 0 9px #ff91b7, 0 0 3px #fff;}
-      100% { text-shadow: 0 0 18px #ff91b7, 0 0 8px #fff;}
-    }
-    .popup-content {
-      font-size: 1em;
-      color: #0090bb;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-weight: 700;
-      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff33, 0 0px 8px #bdf7ff22;
-      margin-bottom: 4px;
-      margin-top: 1px;
-      padding: 2px 0;
-      line-height: 1.3em;
-      letter-spacing: 0.2px;
-    }
-    .popup-close {
-      position: absolute;
-      top: 8px; right: 14px;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      padding-bottom: 8px;
       background: none;
-      font-size: 1em;
-      color: #37b7ff;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      opacity: 0.7;
-      text-shadow: 0 1px 8px #fff;
-      transition: color 0.13s;
+      pointer-events: none;
     }
-    .popup-close:hover { opacity: 1; color: #ff91b7;}
+    .retro-video-frame {
+      background: linear-gradient(180deg, #cbeaff 0%, #b2d8f7 100%);
+      border: 2.5px solid #5ca8d6;
+      border-radius: 9px 9px 14px 14px;
+      box-shadow: 0 6px 28px #0090bb33, 0 0 0 2px #fff9;
+      width: 410px;
+      max-width: 98vw;
+      margin-bottom: 0;
+      overflow: hidden;
+      position: relative;
+      pointer-events: auto;
+    }
+    .retro-title-bar {
+      background: linear-gradient(90deg, #0a469b 0%, #53a1ed 100%);
+      color: #fff;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      font-size: 1.03em;
+      font-weight: bold;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      padding: 0 7px;
+      border-bottom: 1.5px solid #5ca8d6;
+      box-shadow: 0 2px 6px #0a469b44;
+      position: relative;
+      user-select: none;
+    }
+    .retro-icon {
+      margin-right: 7px;
+      font-size: 1.2em;
+    }
+    .retro-title {
+      flex: 1;
+      text-shadow: 0 1px 8px #fff8, 0 1px 2px #00bfff33;
+      letter-spacing: 0.04em;
+    }
+    .retro-buttons {
+      display: flex;
+      gap: 3px;
+    }
+    .retro-btn {
+      display: inline-block;
+      width: 13px; height: 13px;
+      border-radius: 2.5px;
+      margin-left: 2px;
+      margin-top: 1px;
+      box-shadow: 0 1px 3px #0003;
+    }
+    .retro-btn.min { background: #ebc900; border: 1px solid #b9a400; }
+    .retro-btn.max { background: #2dcb54; border: 1px solid #19932d; }
+    .retro-btn.close { background: #ef3c38; border: 1px solid #910502; }
+    .retro-video-frame video {
+      width: 100%;
+      display: block;
+      background: #000;
+      border-radius: 0 0 13px 13px;
+      box-shadow: 0 2px 12px #4e88ff44;
+      outline: none;
+      margin: 0;
+    }
     @media (max-width: 540px) {
       .container, .comments-balloon {max-width: 99vw;}
       .popup-balloon {min-width: 37vw; padding: 5vw 2vw 6vw 2vw;}
@@ -404,6 +393,7 @@
       .profile-center img { width: 60px; height: 60px; }
       .clock-bubble { font-size: 1em; padding: 5px 5vw;}
       .clear-chat-btn {width: 15px; height: 15px; font-size:0.85em;}
+      .retro-video-frame {width: 99vw;}
     }
   </style>
 </head>
@@ -446,8 +436,34 @@
       <div class="popup-balloon" id="popupContent" onclick="event.stopPropagation();"></div>
     </div>
   </div>
+
+  <!-- Eski Windows Media Player efektli video oynatıcı EN ALTA sabitlenmiş -->
+  <div class="retro-video-wrap">
+    <div class="retro-video-frame">
+      <div class="retro-title-bar">
+        <span class="retro-icon">🎬</span>
+        <span class="retro-title">Windows Media Player</span>
+        <span class="retro-buttons">
+          <span class="retro-btn min"></span>
+          <span class="retro-btn max"></span>
+          <span class="retro-btn close"></span>
+        </span>
+      </div>
+      <video
+        controls
+        autoplay
+        playsinline
+        id="myVideoPlayer"
+        style="background:#000;border-radius:0 0 13px 13px;outline:none;margin:0;width:100%;"
+      >
+        <source src="https://drive.google.com/uc?export=preview&id=11eMLhO61PXE_ATgFvXkIbf8zA_saM3ki" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+      </video>
+    </div>
+  </div>
+
   <script>
-    // Clock at top (shows Istanbul time, no label)
+    // Saat
     function updateClockBubble() {
       const now = new Date();
       const trOffset = new Date().getTimezoneOffset();
@@ -455,8 +471,7 @@
       const hh = trTime.getHours().toString().padStart(2,'0');
       const mm = trTime.getMinutes().toString().padStart(2,'0');
       const ss = trTime.getSeconds().toString().padStart(2,'0');
-      document.getElementById('clockBubble').textContent =
-        `${hh}:${mm}:${ss}`;
+      document.getElementById('clockBubble').textContent = `${hh}:${mm}:${ss}`;
     }
     updateClockBubble();
     setInterval(updateClockBubble, 1000);
@@ -549,6 +564,16 @@
     }
 
     renderComments();
+
+    // Videoda sesi açmak için (bazı tarayıcılar tıklama ister)
+    document.addEventListener("DOMContentLoaded", function() {
+      var vid = document.getElementById('myVideoPlayer');
+      if(vid) {
+        vid.muted = false;
+        vid.volume = 1.0;
+        vid.play().catch(()=>{});
+      }
+    });
   </script>
 </body>
 </html>
