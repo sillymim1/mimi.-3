@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mimi'nin Frutiger Aero Blogu</title>
+  <title>Mimi's Frutiger Aero Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -13,157 +13,142 @@
       background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKQp8be02KSELSMtUVfAWA1_m3DNxD9gy-VA&usqp=CAU') center center / cover no-repeat fixed;
       overflow-x: hidden;
     }
-    .yt-audio {
-      position: fixed;
-      left: -9999px;
-      top: -9999px;
-      width: 0;
-      height: 0;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .cats {
-      position: fixed;
-      top: 0; bottom: 0; left: 0; right: 0;
-      width: 100vw;
-      pointer-events: none;
-      z-index: 2;
-    }
-    .cat {
-      position: absolute;
-      width: 44px; height: 44px;
-      animation: dance 2.2s infinite alternate;
-      filter: drop-shadow(0 0 12px #00bfff99);
-      background-size: cover;
-    }
-    .cat1 { left: 8px; top: 13%; background-image: url('https://i.imgur.com/dK21bll.gif');}
-    .cat2 { left: 12px; top: 78%; background-image: url('https://i.imgur.com/HEQdSbO.gif');}
-    .cat3 { right: 8px; top: 28%; background-image: url('https://i.imgur.com/Mm8dVHz.gif');}
-    .cat4 { right: 14px; top: 81%; background-image: url('https://i.imgur.com/dK21bll.gif');}
-    .cat5 { left: 14px; top: 51%; background-image: url('https://i.imgur.com/Mm8dVHz.gif');}
-    .cat6 { right: 10px; top: 11%; background-image: url('https://i.imgur.com/HEQdSbO.gif');}
-    @keyframes dance {
-      0% { transform: translateY(0) scale(1);}
-      100% { transform: translateY(-12px) scale(1.08);}
-    }
     .container {
-      max-width: 340px;
-      margin: 40px auto 24px auto;
-      background: rgba(190,190,190,0.18);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
-      border: 2px solid rgba(120,120,130,0.15);
-      padding: 13px 11px 16px 11px;
-      backdrop-filter: blur(7px);
+      max-width: 260px;
+      margin: 38px auto 15px auto;
+      background: rgba(190,190,190,0.13);
+      border-radius: 10px;
+      box-shadow: 0 4px 16px 0 rgba(31,38,135,0.08);
+      border: 1.3px solid rgba(120,120,130,0.12);
+      padding: 10px 10px 15px 10px;
+      backdrop-filter: blur(4px);
       z-index: 10;
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 10px;
     }
     .about-btn {
       display: block;
       margin: 0 auto 0 auto;
-      padding: 7px 14px;
-      font-size: 1em;
+      padding: 4px 9px;
+      font-size: 0.92em;
       font-weight: 700;
       background: #00bfff;
       color: #fff;
       border: none;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px #00bfff22;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px #00bfff22;
       cursor: pointer;
       letter-spacing: 1px;
-      transition: background 0.15s;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
+      transition: background 0.11s;
     }
     .about-btn:hover { background: #0080c0; }
     .profile {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 7px;
       background: rgba(255,255,255,0.7);
-      border-radius: 8px;
-      border: 2px solid #bdbdbd;
-      box-shadow: 0 2px 8px rgba(100,100,110,0.07);
-      padding: 7px 8px 7px 7px;
+      border-radius: 5px;
+      border: 1.2px solid #bdbdbd;
+      box-shadow: 0 1px 5px rgba(100,100,110,0.05);
+      padding: 5px 6px 5px 5px;
+      font-size: 0.93em;
     }
     .profile img {
-      width: 36px; height: 36px;
+      width: 24px; height: 24px;
       object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid #00bfff;
+      border-radius: 5px;
+      border: 1.5px solid #00bfff;
       background: #caf0fa;
     }
     .profile-info {
       flex: 1;
-      font-size: 1em;
+      font-size: 0.93em;
     }
     .profile-info a {
       text-decoration: none;
       color: #00bfff;
       font-weight: bold;
-      font-size: 1em;
+      font-size: 0.93em;
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
     .profile-info .bio {
       color: #408bad;
-      font-size: 0.93em;
+      font-size: 0.88em;
       font-style: italic;
     }
+    .music-btn {
+      display: block;
+      margin: 7px auto 12px auto;
+      padding: 4px 13px;
+      font-size: 0.93em;
+      font-weight: 600;
+      background: #d1f7ff;
+      color: #0090bb;
+      border: 1px solid #bdbdbd;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background 0.13s;
+      letter-spacing: 0.5px;
+      box-shadow: 0 1px 7px #00bfff22;
+    }
+    .music-btn:hover { background: #caf0fa;}
     .saywhatever {
       text-align: center;
-      font-size: 1em;
-      font-weight: 700;
+      font-size: 0.92em;
+      font-weight: 600;
       color: #0090bb;
       background: rgba(255,255,255,0.68);
-      border-radius: 8px;
-      border: 2px solid #bdbdbd;
-      box-shadow: 0 2px 8px rgba(100,100,110,0.07);
-      padding: 8px 0 6px 0;
-      margin-bottom: 5px;
-      letter-spacing: 0.6px;
+      border-radius: 4px;
+      border: 1.1px solid #bdbdbd;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
+      padding: 5px 0 4px 0;
+      margin-bottom: 2px;
+      letter-spacing: 0.5px;
     }
     .comments {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
     .comment {
-      background: rgba(200,200,200,0.40);
-      border-radius: 7px;
-      border: 2px solid #bdbdbd;
-      box-shadow: 0 2px 8px rgba(100,100,110,0.07);
-      padding: 6px 7px 6px 7px;
-      font-size: 0.95em;
+      background: rgba(200,200,200,0.38);
+      border-radius: 4px;
+      border: 1.2px solid #bdbdbd;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
+      padding: 4px 5px 4px 5px;
+      font-size: 0.92em;
       word-break: break-word;
     }
     .comment .author {
       font-weight: bold;
       color: #00bfff;
-      margin-right: 6px;
-      font-size: 1em;
+      margin-right: 4px;
+      font-size: 0.95em;
     }
     .comment-form {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 3px;
       background: rgba(255,255,255,0.7);
-      border-radius: 8px;
-      border: 2px solid #bdbdbd;
-      box-shadow: 0 2px 8px rgba(100,100,110,0.07);
-      padding: 7px 5px 7px 5px;
+      border-radius: 4px;
+      border: 1.2px solid #bdbdbd;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.04);
+      padding: 5px 3px 5px 3px;
       margin-top: 0;
+      font-size: 0.92em;
     }
     .comment-form input, .comment-form textarea {
       font-family: inherit;
-      font-size: 0.95em;
-      border-radius: 7px;
-      border: 1.3px solid #00bfff;
-      padding: 5px 8px;
-      background: rgba(255,255,255,0.6);
+      font-size: 0.92em;
+      border-radius: 4px;
+      border: 1px solid #00bfff;
+      padding: 4px 6px;
+      background: rgba(255,255,255,0.5);
       resize: none;
       outline: none;
     }
@@ -171,28 +156,28 @@
       background: #00bfff;
       color: #fff;
       border: none;
-      border-radius: 7px;
-      padding: 6px 0;
+      border-radius: 4px;
+      padding: 4px 0;
       font-weight: bold;
       cursor: pointer;
-      font-size: 0.97em;
-      box-shadow: 0 2px 8px #00bfff44;
-      transition: background 0.15s;
+      font-size: 0.93em;
+      box-shadow: 0 1px 4px #00bfff33;
+      transition: background 0.13s;
     }
     .comment-form button:hover {
       background: #0080c0;
     }
-    /* Kalpli not defteri popup */
+    /* Notebook popup */
     .notebook-popup {
       position: fixed;
       left: 0; top: 0;
       width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.23);
+      background: rgba(0,0,0,0.16);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 99;
-      animation: fadeIn 0.5s;
+      animation: fadeIn 0.4s;
     }
     @keyframes fadeIn {
       from { opacity: 0;}
@@ -200,46 +185,46 @@
     }
     .notebook {
       background: #fff;
-      border-radius: 19px;
-      border: 2px solid #ff91b7;
-      box-shadow: 0 0 30px #ffb6df88;
-      padding: 21px 18px 18px 18px;
-      min-width: 210px;
+      border-radius: 13px;
+      border: 1.7px solid #ff91b7;
+      box-shadow: 0 0 12px #ffb6df55;
+      padding: 13px 10px 12px 10px;
+      min-width: 130px;
       max-width: 90vw;
       position: relative;
       text-align: center;
-      font-size: 1.09em;
+      font-size: 0.98em;
       color: #d13079;
       font-family: 'Montserrat', Arial, sans-serif;
       font-weight: 600;
-      letter-spacing: 0.7px;
+      letter-spacing: 0.5px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      animation: popin 0.4s;
+      animation: popin 0.3s;
     }
     @keyframes popin {
       from { transform: scale(0.7);}
       to { transform: scale(1);}
     }
     .notebook-heart {
-      font-size: 1.8em;
-      margin-bottom: 5px;
+      font-size: 1.35em;
+      margin-bottom: 3px;
       color: #ff91b7;
       animation: heartbeat 1.3s infinite;
     }
     @keyframes heartbeat {
       0%, 100% {transform: scale(1);}
-      40% {transform: scale(1.2);}
-      60% {transform: scale(0.95);}
+      40% {transform: scale(1.15);}
+      60% {transform: scale(0.93);}
     }
     .notebook-close {
       position: absolute;
-      top: 7px; right: 11px;
+      top: 4px; right: 9px;
       background: none;
-      font-size: 1.2em;
+      font-size: 1em;
       color: #d13079;
       border: none;
       cursor: pointer;
@@ -248,71 +233,68 @@
     }
     .notebook-close:hover { opacity: 1; color: #a00;}
     @media (max-width: 540px) {
-      .container {max-width: 99vw; margin: 12px 1vw; padding: 5px 2vw 9px 2vw;}
-      .profile img { width: 28px; height: 28px; }
-      .notebook { min-width: 60vw; padding: 15px 7vw 12px 7vw;}
+      .container {max-width: 96vw; margin: 7px 2vw;}
+      .profile img { width: 17px; height: 17px; }
+      .notebook { min-width: 43vw; padding: 8px 7vw 9px 7vw;}
     }
   </style>
 </head>
 <body>
-  <!-- Arka planda otomatik çalan YouTube şarkısı (ses) -->
-  <div class="yt-audio">
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/mi_5tf9n7-Y?si=7h5tE9w1DQWCo-xr&autoplay=1&loop=1&playlist=mi_5tf9n7-Y&controls=0&mute=0" frameborder="0" allow="autoplay"></iframe>
-  </div>
-
-  <!-- Pixel kediler -->
-  <div class="cats">
-    <div class="cat cat1"></div>
-    <div class="cat cat2"></div>
-    <div class="cat cat3"></div>
-    <div class="cat cat4"></div>
-    <div class="cat cat5"></div>
-    <div class="cat cat6"></div>
-  </div>
-
+  <!-- Play music button and hidden audio -->
+  <button class="music-btn" id="playMusic">Play music</button>
+  <audio id="bgmusic" src="https://dl.sndup.net/3rtd/waiting-leverfall.mp3" loop></audio>
   <div class="container">
-    <button class="about-btn" onclick="showNotebook()">Hakkımda</button>
+    <button class="about-btn" onclick="showNotebook()">About</button>
     <div class="profile">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXNDm6kNGAZzoyGCG9pzDyfl3yEB7i6diIJVVcd29pA&s" alt="Profil Fotoğrafı">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXXNDm6kNGAZzoyGCG9pzDyfl3yEB7i6diIJVVcd29pA&s" alt="Profile Picture">
       <div class="profile-info">
         <a href="https://instagram.com/M1miiqz.x1" target="_blank">@M1miiqz.x1</a>
         <div class="bio">Pixel DogBoy</div>
       </div>
     </div>
+    <div style="height:22px;"></div>
     <div class="saywhatever">say whatever u want :3</div>
     <div class="comments" id="comments"></div>
     <form class="comment-form" id="commentForm">
-      <input type="text" id="author" placeholder="Kullanıcı İsmin" required maxlength="24">
-      <textarea id="commentText" rows="2" placeholder="Yorumun..." required maxlength="180"></textarea>
-      <button type="submit">Yorum Yap</button>
+      <input type="text" id="author" placeholder="Your Name" required maxlength="24">
+      <textarea id="commentText" rows="2" placeholder="Your message..." required maxlength="180"></textarea>
+      <button type="submit">Send</button>
     </form>
   </div>
-  <!-- Kalpli not defteri popup -->
+  <!-- Heart notebook popup -->
   <div id="notebookPopup" style="display:none;">
     <div class="notebook-popup" onclick="closeNotebook(event)">
       <div class="notebook" onclick="event.stopPropagation();">
         <div class="notebook-heart">💖</div>
-        <button class="notebook-close" onclick="closeNotebook(event)" title="Kapat">&times;</button>
-        <div>The only thing I know about myself is that I have no brain ^w^</div>
+        <button class="notebook-close" onclick="closeNotebook(event)" title="Close">&times;</button>
+        <div style="font-size:0.97em;margin-top:4px;">
+          The only thing I know about myself is that I have no brain ^w^
+        </div>
       </div>
     </div>
   </div>
   <script>
-    // Hakkımda kalpli not defteri popup
+    // Music play button
+    document.getElementById('playMusic').onclick = function() {
+      var audio = document.getElementById('bgmusic');
+      audio.play();
+      this.style.display = 'none';
+    };
+    // Notebook popup
     function showNotebook() {
       document.getElementById('notebookPopup').style.display = 'block';
     }
     function closeNotebook(e) {
       document.getElementById('notebookPopup').style.display = 'none';
     }
-    // Yorum sistemi (localStorage ile)
+    // Comments system (localStorage)
     const commentsEl = document.getElementById('comments');
     const form = document.getElementById('commentForm');
     let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
     function renderComments() {
       commentsEl.innerHTML = '';
       if(comments.length === 0) {
-        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:1em;padding:7px;">Henüz yorum yok. İlk sen yaz!</div>';
+        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:0.93em;padding:6px;">No comments yet. Be the first!</div>';
       } else {
         comments.forEach(c => {
           const el = document.createElement('div');
