@@ -479,10 +479,12 @@
     renderComments();
   </script>
 </body>
-  <audio autoplay loop muted>
-  <source src="waiting-leverfall.mp3" type="audio/mpeg">
+  <audio autoplay loop hidden>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
 </audio>
 <script>
+  // Tarayıcı otomatik oynatmaya izin vermezse,
+  // kullanıcı ekrana tıklayınca sesi açar
   window.addEventListener('click', () => {
     document.querySelector('audio').muted = false;
   });
