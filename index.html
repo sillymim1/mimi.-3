@@ -401,3 +401,217 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mimi Frutiger Aero Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Frutiger Aero benzeri font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIX2Po5kF5iijkA2EwvexNEovbWV7o5Zet4lHhr_R2Y5wzWxiyll6qqM&s=10') center center / cover no-repeat fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .center-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+    .container {
+      max-width: 330px;
+      background: rgba(255,255,255,0.36);
+      border-radius: 22px;
+      box-shadow: 0 6px 22px 0 rgba(31,38,135,0.15), 0 1px 12px #b9eaff44;
+      border: 1.7px solid rgba(120,120,130,0.11);
+      padding: 18px 15px 20px 15px;
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      z-index: 2;
+      position: relative;
+    }
+    .bubble-row {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin-bottom: 10px;
+      margin-top: 15px;
+    }
+    .info-bubble {
+      flex: 1;
+      min-width: 110px;
+      text-align: center;
+      background: rgba(255,255,255,0.38);
+      border-radius: 15px;
+      border: 1.6px solid #b9eaff;
+      box-shadow: 0 3px 17px #6ee4ff33;
+      padding: 13px 0 13px 0;
+      font-size: 1.18em;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      color: #0090bb;
+      cursor: pointer;
+      transition: background 0.14s, box-shadow 0.14s;
+      user-select: none;
+      text-shadow: 0 1px 14px #fff, 0 1px 2px #00bfff44;
+      border-bottom: 3px solid #96e2ff;
+      letter-spacing: 0.8px;
+      backdrop-filter: blur(1.5px);
+    }
+    .info-bubble:hover {
+      background: rgba(230,247,255,0.45);
+      box-shadow: 0 2px 22px #00bfff44;
+      color: #37b7ff;
+    }
+    /* Popup Frutiger Aero tarzı */
+    .popup-bg {
+      position: fixed;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.09);
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    .popup-balloon {
+      background: linear-gradient(135deg,#e3faff 55%,#f7faff 100%);
+      border-radius: 29px;
+      border: 2.8px solid #96e2ff;
+      box-shadow: 0 0 40px #a6eaff66, 0 0 0 #fff;
+      padding: 28px 38px 26px 38px;
+      min-width: 180px;
+      max-width: 90vw;
+      position: relative;
+      text-align: center;
+      font-size: 1.16em;
+      color: #0090bb;
+      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      animation: popin 0.3s;
+      filter: drop-shadow(0 0 22px #b2faff88);
+      overflow: hidden;
+      text-shadow: 0 1px 14px #fff, 0 1px 2px #00bfff44, 0 0 16px #bdf7ff88;
+    }
+    @keyframes popin {
+      from { transform: scale(0.7);}
+      to { transform: scale(1);}
+    }
+    .popup-heart {
+      font-size: 2.2em;
+      margin-bottom: 13px;
+      margin-top: -7px;
+      color: #ff91b7;
+      animation: popupGlow 1.2s infinite alternate;
+      text-shadow: 0 0 30px #ff91b7, 0 0 8px #fff, 0 2px 20px #fff;
+      filter: blur(0.15px) brightness(1.10);
+    }
+    @keyframes popupGlow {
+      0% { text-shadow: 0 0 24px #ff91b7, 0 0 8px #fff;}
+      100% { text-shadow: 0 0 38px #ff91b7, 0 0 19px #fff;}
+    }
+    .popup-content {
+      font-size: 1.13em;
+      color: #0090bb;
+      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
+      text-shadow: 0 1px 10px #fff, 0 1px 2px #00bfff44, 0 0px 16px #bdf7ff88;
+      margin-bottom: 7px;
+      margin-top: 2px;
+      padding: 2px 0;
+      line-height: 1.6em;
+      letter-spacing: 0.2px;
+    }
+    .popup-close {
+      position: absolute;
+      top: 16px; right: 28px;
+      background: none;
+      font-size: 1.3em;
+      color: #37b7ff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      opacity: 0.7;
+      text-shadow: 0 1px 14px #fff;
+      transition: color 0.13s;
+    }
+    .popup-close:hover { opacity: 1; color: #ff91b7;}
+    @media (max-width: 540px) {
+      .container, .comments-balloon {max-width: 94vw;}
+      .popup-balloon {min-width: 50vw; padding: 12vw 2vw 13vw 2vw;}
+      .info-bubble { font-size: 1em; min-width: 80px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="center-wrap">
+    <div class="container">
+      <div class="bubble-row">
+        <div class="info-bubble" onclick="showPopup('games')">Game Names</div>
+        <div class="info-bubble" onclick="showPopup('bestfriends')">Bestfriends! ^w^</div>
+      </div>
+    </div>
+  </div>
+  <!-- Popup balloon -->
+  <div id="popupBG" style="display:none;">
+    <div class="popup-bg" onclick="closePopup(event)">
+      <div class="popup-balloon" id="popupContent" onclick="event.stopPropagation();"></div>
+    </div>
+  </div>
+  <script>
+    // Popup açma işlevi
+    function showPopup(type) {
+      let content = '';
+      if(type === 'games') {
+        content = `<div class="popup-heart">🎮</div>
+          <div class="popup-content">
+            <span style="color:#37b7ff;font-weight:bold;">Roblox:</span> boreas1709<br>
+            <span style="color:#37b7ff;font-weight:bold;">War Thunder Mobile:</span> Yukarı Akiyama<br>
+            <span style="color:#37b7ff;font-weight:bold;">Minecraft:</span> VeXa8758
+          </div>`;
+      } else if(type === 'bestfriends') {
+        content = `<div class="popup-heart">✨</div>
+          <div class="popup-content">
+            My Instagram bestfriends:<br>
+            <span style="color:#37b7ff;font-weight:bold;">@y0n6qz.t</span><br>
+            <span style="color:#37b7ff;font-weight:bold;">@cinar.d138</span><br>
+            <span style="color:#37b7ff;font-weight:bold;">@rainbows._.dashie</span><br>
+            <span style="color:#37b7ff;font-weight:bold;">@kris.sirg</span>
+          </div>`;
+      }
+      document.getElementById('popupContent').innerHTML =
+         `<button class="popup-close" onclick="closePopup(event)" title="Close">&times;</button>
+         ${content}`;
+      document.getElementById('popupBG').style.display = 'block';
+    }
+    function closePopup(e) {
+      document.getElementById('popupBG').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
