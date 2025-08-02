@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Mimi Frutiger Aero Mini Site</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Frutiger Aero için fontlar -->
+  <!-- Frutiger Aero font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -16,27 +16,29 @@
       position: relative;
     }
     .clock-bar {
-      position: fixed;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      background: rgba(255,255,255,0.26);
-      border-radius: 13px;
-      border: 1.2px solid #b9eaff;
-      box-shadow: 0 2px 8px #6ee4ff33;
-      font-size: 0.90em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 22px auto 0 auto;
+      width: 100vw;
+      pointer-events: none;
+    }
+    .clock-bubble {
+      background: rgba(255,255,255,0.32);
+      border-radius: 16px;
+      border: 1.6px solid #b9eaff;
+      box-shadow: 0 3px 16px #6ee4ff33;
+      font-size: 1.32em;
       color: #0090bb;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       font-weight: 700;
-      padding: 3px 14px 3px 14px;
-      letter-spacing: 0.2px;
-      text-shadow: 0 1px 9px #fff, 0 1px 2px #00bfff44;
+      padding: 9px 32px 9px 32px;
+      letter-spacing: 0.3px;
+      text-shadow: 0 1px 13px #fff, 0 1px 2px #00bfff44;
       user-select: none;
-      min-width: 110px;
+      min-width: 150px;
       text-align: center;
-      pointer-events: none;
-      opacity: 0.88;
+      opacity: 0.94;
     }
     .center-wrap {
       min-height: 100vh;
@@ -44,21 +46,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding-top: 55px;
-      padding-bottom: 20px;
+      padding-top: 32px;
+      padding-bottom: 28px;
     }
     .container {
-      max-width: 220px;
-      background: rgba(255,255,255,0.21);
-      border-radius: 16px;
-      box-shadow: 0 3px 12px 0 rgba(31,38,135,0.11), 0 1px 8px #b9eaff33;
-      border: 1px solid rgba(120,120,130,0.09);
-      padding: 9px 7px 13px 7px;
-      backdrop-filter: blur(6px);
+      max-width: 340px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 27px;
+      box-shadow: 0 7px 30px 0 rgba(31,38,135,0.13), 0 1px 18px #b9eaff44;
+      border: 2px solid rgba(120,120,130,0.10);
+      padding: 27px 22px 29px 22px;
+      backdrop-filter: blur(8px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 28px;
       z-index: 2;
       position: relative;
     }
@@ -66,176 +68,174 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 6px;
-      margin-top: 7px;
+      gap: 28px;
+      margin-bottom: 10px;
+      margin-top: 19px;
     }
     .info-bubble {
       flex: 1;
-      min-width: 53px;
+      min-width: 120px;
       text-align: center;
-      background: rgba(255,255,255,0.20);
-      border-radius: 11px;
-      border: 1px solid #b9eaff;
-      box-shadow: 0 2px 9px #6ee4ff22;
-      padding: 7px 0 7px 0;
-      font-size: 0.85em;
+      background: rgba(255,255,255,0.32);
+      border-radius: 17px;
+      border: 1.7px solid #b9eaff;
+      box-shadow: 0 3px 22px #6ee4ff33;
+      padding: 16px 0 16px 0;
+      font-size: 1.22em;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       font-weight: 700;
       color: #0090bb;
       cursor: pointer;
       transition: background 0.14s, box-shadow 0.14s;
       user-select: none;
-      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff33;
-      border-bottom: 2px solid #96e2ff;
-      letter-spacing: 0.4px;
-      backdrop-filter: blur(1.2px);
-      opacity: 0.93;
+      text-shadow: 0 1px 17px #fff, 0 1px 2px #00bfff44;
+      border-bottom: 3.5px solid #96e2ff;
+      letter-spacing: 0.9px;
+      backdrop-filter: blur(2px);
     }
     .info-bubble:hover {
-      background: rgba(230,247,255,0.22);
-      box-shadow: 0 2px 11px #00bfff33;
+      background: rgba(230,247,255,0.35);
+      box-shadow: 0 2px 26px #00bfff44;
       color: #37b7ff;
     }
     .profile-center {
       margin: 0 auto 0 auto;
-      background: rgba(255,255,255,0.24);
-      border-radius: 12px;
-      border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 7px #b9eaff22;
-      padding: 13px 7px 10px 7px;
+      background: rgba(255,255,255,0.29);
+      border-radius: 21px;
+      border: 1.6px solid #bdbdbd;
+      box-shadow: 0 1px 16px #b9eaff44;
+      padding: 28px 16px 18px 16px;
       width: 98%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 0.91em;
+      font-size: 1.22em;
       position: relative;
     }
     .profile-center img {
-      width: 32px; height: 32px;
+      width: 78px; height: 78px;
       object-fit: cover;
-      border-radius: 7px;
-      border: 1px solid #00bfff;
+      border-radius: 18px;
+      border: 2.6px solid #00bfff;
       background: #caf0fa;
-      margin-bottom: 5px;
-      box-shadow: 0 2px 7px #a0eaff33;
+      margin-bottom: 10px;
+      box-shadow: 0 5px 16px #a0eaff55;
     }
     .profile-center a {
       text-decoration: none;
       color: #00bfff;
       font-weight: bold;
-      font-size: 0.91em;
-      margin-bottom: 1px;
+      font-size: 1.25em;
+      margin-bottom: 2px;
       word-break: break-all;
-      text-shadow: 0 1px 9px #fff, 0 1px 2px #00bfff44;
+      text-shadow: 0 1px 13px #fff, 0 1px 2px #00bfff44;
     }
     .profile-center .bio {
       color: #408bad;
-      font-size: 0.83em;
+      font-size: 1em;
       font-style: italic;
       word-break: break-word;
-      margin-top: 1px;
-      margin-bottom: 2px;
+      margin-top: 2px;
+      margin-bottom: 4px;
     }
     .profile-center .small-desc {
-      font-size: 0.77em;
+      font-size: 0.98em;
       color: #0090bb;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      margin-top: 3px;
+      margin-top: 6px;
       opacity: 0.8;
       text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
       font-weight: 700;
       letter-spacing: 0.2px;
     }
     .comments-balloon {
-      max-width: 220px;
-      margin: 13px auto 0 auto;
-      background: rgba(255,255,255,0.19);
-      border-radius: 10px;
-      border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 8px #b9eaff33;
-      padding: 8px 7px 7px 7px;
+      max-width: 340px;
+      margin: 28px auto 0 auto;
+      background: rgba(255,255,255,0.23);
+      border-radius: 17px;
+      border: 1.5px solid #bdbdbd;
+      box-shadow: 0 1px 18px #b9eaff33;
+      padding: 17px 14px 16px 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 12px;
       box-sizing: border-box;
       z-index: 2;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-size: 0.85em;
-      opacity: 0.96;
+      font-size: 1.09em;
     }
     .comments {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      margin-bottom: 1px;
+      gap: 9px;
+      margin-bottom: 3px;
     }
     .comment {
-      background: rgba(200,200,200,0.18);
-      border-radius: 4px;
+      background: rgba(200,200,200,0.19);
+      border-radius: 7px;
       border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 2px rgba(100,100,110,0.07);
-      padding: 2px 6px 2px 6px;
-      font-size: 0.84em;
+      box-shadow: 0 1px 6px rgba(100,100,110,0.10);
+      padding: 7px 12px 7px 12px;
+      font-size: 1.05em;
       word-break: break-word;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      gap: 8px;
     }
     .comment .author {
       font-weight: bold;
       color: #00bfff;
-      margin-right: 2px;
-      font-size: 0.85em;
+      margin-right: 4px;
+      font-size: 1.07em;
     }
     .comment .badge {
-      font-size: 0.7em;
+      font-size: 0.9em;
       background: #e3faff;
       color: #0090bb;
-      border-radius: 5px;
-      padding: 1px 5px;
-      margin-right: 3px;
-      margin-left: 1px;
+      border-radius: 7px;
+      padding: 2px 10px;
+      margin-right: 5px;
+      margin-left: 2px;
       font-weight: 700;
       opacity: 0.84;
       letter-spacing: 0.2px;
-      box-shadow: 0 1px 4px #b9eaff22;
+      box-shadow: 0 1px 6px #b9eaff33;
       border: 1px solid #b9eaff;
-      text-shadow: 0 1px 4px #fff;
+      text-shadow: 0 1px 6px #fff;
     }
     .comment .timestamp {
       color: #408bad;
-      font-size: 0.72em;
-      margin-left: 5px;
+      font-size: 0.9em;
+      margin-left: 8px;
       opacity: 0.76;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       font-weight: 700;
-      text-shadow: 0 1px 6px #fff;
+      text-shadow: 0 1px 7px #fff;
     }
     .comment-form {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 8px;
       background: rgba(255,255,255,0.17);
-      border-radius: 4px;
+      border-radius: 8px;
       border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 2px rgba(100,100,110,0.05);
-      padding: 4px 4px 4px 4px;
+      box-shadow: 0 1px 4px rgba(100,100,110,0.05);
+      padding: 11px 7px 11px 7px;
       margin-top: 0;
-      font-size: 0.82em;
+      font-size: 1.02em;
       box-sizing: border-box;
     }
     .comment-form input, .comment-form textarea {
       font-family: inherit;
-      font-size: 0.82em;
-      border-radius: 3px;
-      border: 1px solid #00bfff;
-      padding: 3px 4px;
-      background: rgba(255,255,255,0.3);
+      font-size: 1.05em;
+      border-radius: 5px;
+      border: 1.5px solid #00bfff;
+      padding: 7px 11px;
+      background: rgba(255,255,255,0.31);
       resize: none;
       outline: none;
     }
@@ -243,24 +243,24 @@
       background: #00bfff;
       color: #fff;
       border: none;
-      border-radius: 4px;
-      padding: 4px 0;
+      border-radius: 7px;
+      padding: 10px 0;
       font-weight: bold;
       cursor: pointer;
-      font-size: 0.82em;
-      box-shadow: 0 1px 2px #00bfff22;
+      font-size: 1.09em;
+      box-shadow: 0 1px 7px #00bfff33;
       transition: background 0.13s;
     }
     .comment-form button:hover {
       background: #0080c0;
     }
-    /* Popup Frutiger Aero tarzı cam efekti */
+    /* Popup Frutiger Aero style, glass effect only */
     .popup-bg {
       position: fixed;
       left: 0; top: 0;
       width: 100vw; height: 100vh;
       background: rgba(0,0,0,0.05);
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(3px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -272,85 +272,88 @@
       to { opacity: 1;}
     }
     .popup-balloon {
-      background: rgba(255,255,255,0.19);
-      border-radius: 18px;
-      border: 1.8px solid #96e2ff;
-      box-shadow: 0 0 18px #a6eaff44, 0 0 0 #fff;
-      padding: 18px 20px 12px 20px;
-      min-width: 90px;
-      max-width: 78vw;
+      background: rgba(255,255,255,0.18);
+      border-radius: 25px;
+      border: 2px solid #96e2ff;
+      box-shadow: 0 0 31px #a6eaff66, 0 0 0 #fff;
+      padding: 34px 34px 22px 34px;
+      min-width: 130px;
+      max-width: 86vw;
       position: relative;
       text-align: center;
-      font-size: 0.92em;
+      font-size: 1.18em;
       color: #0090bb;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
       font-weight: 700;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.7px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
       animation: popin 0.3s;
-      filter: drop-shadow(0 0 11px #b2faff44);
+      filter: drop-shadow(0 0 22px #b2faff88);
       overflow: hidden;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff33, 0 0 8px #bdf7ff44;
+      text-shadow: 0 1px 14px #fff, 0 1px 2px #00bfff44, 0 0 16px #bdf7ff88;
+      backdrop-filter: blur(16px);
       opacity: 0.97;
-      backdrop-filter: blur(11px);
     }
     @keyframes popin {
       from { transform: scale(0.7);}
       to { transform: scale(1);}
     }
     .popup-heart {
-      font-size: 1.22em;
-      margin-bottom: 7px;
-      margin-top: -2px;
+      font-size: 2.05em;
+      margin-bottom: 16px;
+      margin-top: -7px;
       color: #ff91b7;
       animation: popupGlow 1.2s infinite alternate;
-      text-shadow: 0 0 11px #ff91b7, 0 0 4px #fff, 0 2px 7px #fff;
-      filter: blur(0.13px) brightness(1.07);
+      text-shadow: 0 0 30px #ff91b7, 0 0 8px #fff, 0 2px 20px #fff;
+      filter: blur(0.15px) brightness(1.10);
     }
     @keyframes popupGlow {
-      0% { text-shadow: 0 0 9px #ff91b7, 0 0 3px #fff;}
-      100% { text-shadow: 0 0 18px #ff91b7, 0 0 8px #fff;}
+      0% { text-shadow: 0 0 24px #ff91b7, 0 0 8px #fff;}
+      100% { text-shadow: 0 0 38px #ff91b7, 0 0 19px #fff;}
     }
     .popup-content {
-      font-size: 0.92em;
+      font-size: 1.13em;
       color: #0090bb;
       font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
       font-weight: 700;
-      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff33, 0 0px 8px #bdf7ff22;
-      margin-bottom: 4px;
-      margin-top: 1px;
+      text-shadow: 0 1px 10px #fff, 0 1px 2px #00bfff44, 0 0px 16px #bdf7ff88;
+      margin-bottom: 7px;
+      margin-top: 2px;
       padding: 2px 0;
-      line-height: 1.3em;
+      line-height: 1.6em;
       letter-spacing: 0.2px;
     }
     .popup-close {
       position: absolute;
-      top: 8px; right: 14px;
+      top: 20px; right: 30px;
       background: none;
-      font-size: 1em;
+      font-size: 1.3em;
       color: #37b7ff;
       border: none;
       cursor: pointer;
       font-weight: bold;
       opacity: 0.7;
-      text-shadow: 0 1px 8px #fff;
+      text-shadow: 0 1px 14px #fff;
       transition: color 0.13s;
     }
     .popup-close:hover { opacity: 1; color: #ff91b7;}
     @media (max-width: 540px) {
-      .container, .comments-balloon {max-width: 92vw;}
-      .popup-balloon {min-width: 37vw; padding: 7vw 2vw 8vw 2vw;}
-      .info-bubble { font-size: 0.82em; min-width: 50px;}
-      .profile-center img { width: 22px; height: 22px; }
+      .container, .comments-balloon {max-width: 96vw;}
+      .popup-balloon {min-width: 55vw; padding: 6vw 2vw 7vw 2vw;}
+      .info-bubble { font-size: 1em; min-width: 90px;}
+      .profile-center img { width: 50px; height: 50px; }
+      .clock-bubble { font-size: 1.06em; padding: 7px 8vw;}
     }
   </style>
 </head>
 <body>
-  <div class="clock-bar" id="clockBar"></div>
+  <div class="clock-bar">
+    <div class="clock-bubble" id="clockBubble"></div>
+  </div>
   <div class="center-wrap">
     <div class="container">
       <div class="bubble-row">
@@ -380,24 +383,21 @@
     </div>
   </div>
   <script>
-    // Türkiye saatini güncelle
-    function updateClockBar() {
+    // Clock at top (shows Istanbul time, no label)
+    function updateClockBubble() {
       const now = new Date();
       const trOffset = new Date().getTimezoneOffset();
       const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
       const hh = trTime.getHours().toString().padStart(2,'0');
       const mm = trTime.getMinutes().toString().padStart(2,'0');
       const ss = trTime.getSeconds().toString().padStart(2,'0');
-      const day = trTime.getDate().toString().padStart(2,'0');
-      const month = (trTime.getMonth()+1).toString().padStart(2,'0');
-      const year = trTime.getFullYear();
-      document.getElementById('clockBar').textContent =
-        `Türkiye Saati: ${hh}:${mm}:${ss} • ${day}.${month}.${year}`;
+      document.getElementById('clockBubble').textContent =
+        `${hh}:${mm}:${ss}`;
     }
-    updateClockBar();
-    setInterval(updateClockBar, 1000);
+    updateClockBubble();
+    setInterval(updateClockBubble, 1000);
 
-    // Popup açma işlevi
+    // Popup open function
     function showPopup(type) {
       let content = '';
       if(type === 'games') {
@@ -410,7 +410,7 @@
       } else if(type === 'bestfriends') {
         content = `<div class="popup-heart">✨</div>
           <div class="popup-content">
-            My Instagram bestfriends:<br>
+            My Instagram best friends:<br>
             <span style="color:#37b7ff;font-weight:bold;">@y0n6qz.t</span><br>
             <span style="color:#37b7ff;font-weight:bold;">@cinar.d138</span><br>
             <span style="color:#37b7ff;font-weight:bold;">@rainbows._.dashie</span><br>
@@ -436,7 +436,7 @@
     function renderComments() {
       commentsEl.innerHTML = '';
       if(comments.length === 0) {
-        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:0.87em;padding:4px;">No comments yet. Be the first!</div>';
+        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:1em;padding:7px;">No comments yet. Be the first!</div>';
       } else {
         comments.forEach((c) => {
           const el = document.createElement('div');
@@ -455,7 +455,7 @@
       const author = authorInput.value.trim();
       const text = document.getElementById('commentText').value.trim();
       if(author && text) {
-        // Saat ve tarih (Türkiye saati)
+        // Istanbul time
         const now = new Date();
         const trOffset = new Date().getTimezoneOffset();
         const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
