@@ -1,594 +1,553 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>its Mimi!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Frutiger Aero font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>for astie :3</title>
+
+  <!-- Google Fonts: handwriting & rounded -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
+    :root{
+      --bg1: #ffe8f2;
+      --bg2: #e8f7ff;
+      --accent1: #ff7ab6;
+      --accent2: #7ad2ff;
+      --accent3: #ffd77a;
+      --paper: #fffdf6;
+      --shadow: rgba(17,17,49,0.12);
+      --glass: rgba(255,255,255,0.5);
+      --sparkle: #fff7ff;
     }
-    body {
-      width: 100vw;
-      height: 100vh;
-      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIX2Po5kF5iijkA2EwvexNEovbWV7o5Zet4lHhr_R2Y5wzWxiyll6qqM&s=10') center center / cover no-repeat fixed;
-      min-height: 100vh;
-      min-width: 100vw;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: radial-gradient(circle at 10% 10%, rgba(255,250,255,0.9), transparent 10%),
+                  radial-gradient(circle at 90% 90%, rgba(240,255,255,0.9), transparent 10%),
+                  linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      overflow:hidden;
     }
-    .background-opacity {
-      position: fixed;
-      z-index: 0;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      background: rgba(255,255,255,0.15);
-      /* backdrop-filter: blur(7.2px); kaldırıldı */
+
+    /* Subtle animated holographic grid */
+    .grid {
+      position:fixed;
+      inset:0;
+      background-image: linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px, 60px 60px;
+      mix-blend-mode: overlay;
+      pointer-events:none;
+      animation: gridmove 20s linear infinite;
+      opacity:0.6;
     }
-    .center-wrap {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-      transform: translateY(-5%);
-      transition: transform 0.2s;
+    @keyframes gridmove {
+      from { transform: translateY(0) rotate(0deg); }
+      to { transform: translateY(-200px) rotate(360deg); }
     }
-    .container {
-      max-width: 370px;
-      width: 100%;
-      background: rgba(255,255,255,0.23);
-      border-radius: 19px;
-      box-shadow: 0 4px 17px 0 rgba(31,38,135,0.13), 0 1px 11px #b9eaff44;
-      border: 1.5px solid rgba(120,120,130,0.09);
-      padding: 12px 18px 16px 18px;
-      /* backdrop-filter: blur(7.2px); kaldırıldı */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      z-index: 2;
-      position: relative;
-      margin-top: 0;
+
+    /* Center stage */
+    .stage {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:20px;
+      padding:40px;
+      box-sizing:border-box;
+      position:relative;
+      z-index:1;
+      text-align:center;
     }
-    .clock-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 18px auto 0 auto;
-      width: 100vw;
-      pointer-events: none;
+
+    /* Header bubble: for astie :3 */
+    .title {
+      font-size:28px;
+      font-weight:700;
+      color:#341a38;
+      letter-spacing:1px;
+      background: linear-gradient(90deg, #fff, rgba(255,255,255,0.6));
+      padding:10px 20px;
+      border-radius:999px;
+      box-shadow: 0 6px 18px rgba(122, 64, 129, 0.18), inset 0 -6px 24px rgba(255,255,255,0.35);
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      transform: rotate(-1deg);
+      border: 2px solid rgba(255,255,255,0.6);
+      position:relative;
     }
-    .clock-bubble {
-      background: rgba(255,255,255,0.30);
-      border-radius: 14px;
-      border: 1.3px solid #b9eaff;
-      box-shadow: 0 2px 10px #6ee4ff33;
-      font-size: 1.08em;
-      color: #0090bb;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-weight: 700;
-      padding: 7px 20px 7px 20px;
-      letter-spacing: 0.25px;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
-      user-select: none;
-      min-width: 110px;
-      text-align: center;
-      opacity: 0.92;
+
+    .title .spark {
+      width:12px;
+      height:12px;
+      background: radial-gradient(circle, var(--accent1), #ffb0db 60%);
+      border-radius:50%;
+      box-shadow: 0 0 16px rgba(255,122,182,0.7);
+      transform: translateY(-3px);
+      animation: beat 1.6s infinite;
     }
-    .bubble-row {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin-bottom: 8px;
-      margin-top: 8px;
+
+    @keyframes beat {
+      0%,100%{ transform: scale(1) translateY(-3px); }
+      50%{ transform: scale(1.15) translateY(-6px); }
     }
-    .info-bubble {
-      flex: 1;
-      min-width: 70px;
-      text-align: center;
-      background: rgba(255,255,255,0.23);
-      border-radius: 13px;
-      border: 1.1px solid #b9eaff;
-      box-shadow: 0 2px 10px #6ee4ff22;
-      padding: 10px 0 10px 0;
-      font-size: 1em;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-weight: 700;
-      color: #0090bb;
-      cursor: pointer;
-      transition: background 0.14s, box-shadow 0.14s;
-      user-select: none;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff33;
-      border-bottom: 2px solid #96e2ff;
-      letter-spacing: 0.4px;
-      /* backdrop-filter: blur(1.44px); kaldırıldı */
-      opacity: 0.93;
+
+    .subtitle {
+      font-size:12px;
+      color:#6b375f;
+      opacity:0.9;
+      margin-top:6px;
     }
-    .info-bubble:hover {
-      background: rgba(230,247,255,0.22);
-      box-shadow: 0 2px 13px #00bfff33;
-      color: #37b7ff;
+
+    /* Cute stickers around header */
+    .sticker {
+      position:absolute;
+      pointer-events:none;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+      animation: floaty 6s ease-in-out infinite;
+      transform-origin:center;
     }
-    .profile-center-wrap {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 2px;
+    .sticker.t1 { left:10%; top:8%; animation-delay:0s; transform: rotate(-12deg); }
+    .sticker.t2 { right:12%; top:12%; animation-delay:1.2s; transform: rotate(8deg); }
+    .sticker.t3 { left:6%; bottom:18%; animation-delay:0.5s; transform: rotate(6deg); }
+    @keyframes floaty {
+      0%{ transform: translateY(0) rotate(0deg); }
+      50%{ transform: translateY(-12px) rotate(6deg); }
+      100%{ transform: translateY(0) rotate(0deg); }
     }
-    .profile-username-top {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 2px;
-      margin-top: 0;
+
+    /* Main card */
+    .card {
+      width: min(860px, 92%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));
+      border-radius:20px;
+      padding:28px;
+      box-shadow: 0 18px 40px var(--shadow), inset 0 -6px 20px rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.6);
+      position:relative;
+      backdrop-filter: blur(6px) saturate(120%);
+      overflow:visible;
     }
-    .profile-username-top a {
-      text-decoration: none;
-      color: #00bfff;
-      font-weight: bold;
-      font-size: 1.23em;
-      display: inline-block;
-      letter-spacing: 0.5px;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
-      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      margin-bottom: 2px;
-      margin-top: 2px;
+
+    .card .desc {
+      color:#4b2b4b;
+      font-size:16px;
+      margin-bottom:18px;
     }
-    .profile-center {
-      background: rgba(255,255,255,0.24);
-      border-radius: 14px;
-      border: 1.1px solid #bdbdbd;
-      box-shadow: 0 1px 8px #b9eaff22;
-      padding: 13px 8px 13px 8px;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      font-size: 1em;
-      gap: 17px;
-      margin: 0 auto;
+
+    /* Y2K glossy button */
+    .y2k-btn {
+      --btn-h:72px;
+      display:inline-grid;
+      place-items:center;
+      width:300px;
+      height:var(--btn-h);
+      background: linear-gradient(180deg, #ffd6ee, #ff9ad6);
+      border-radius: 28px;
+      border: 2px solid rgba(255,255,255,0.9);
+      box-shadow: 0 10px 30px rgba(255,122,182,0.18), 0 4px 14px rgba(0,0,0,0.08), inset 0 -6px 14px rgba(255,255,255,0.5);
+      font-weight:700;
+      color:#3b0f33;
+      font-size:18px;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      transition: transform 250ms cubic-bezier(.2,.9,.3,1), box-shadow 200ms;
+      user-select:none;
     }
-    .profile-center img {
-      width: 88px;
-      height: 88px;
-      object-fit: cover;
-      border-radius: 15px;
-      border: 2.5px solid #00bfff;
-      background: #caf0fa;
-      box-shadow: 0 2px 18px #a0eaff44;
-      flex-shrink: 0;
-      display: block;
+
+    .y2k-btn:before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.05));
+      mix-blend-mode: overlay;
+      pointer-events:none;
     }
-    .profile-texts {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 2px;
-      width: 100%;
+
+    .y2k-btn:active { transform: translateY(2px) scale(0.995); }
+    .y2k-btn:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 18px 50px rgba(255,122,182,0.25); }
+
+    .y2k-btn .shine {
+      position:absolute;
+      left:-40%;
+      top:-20%;
+      width:40%;
+      height:140%;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.8), rgba(255,255,255,0.0));
+      transform: rotate(20deg);
+      filter: blur(8px);
+      opacity:0.8;
+      transition: left 700ms ease;
     }
-    .profile-center .bio {
-      color: #408bad;
-      font-size: 1em;
-      font-style: italic;
-      word-break: break-word;
-      margin-top: 2px;
-      margin-bottom: 2px;
+    .y2k-btn:hover .shine { left:60%; }
+
+    .small-hint {
+      margin-top:12px;
+      font-size:13px;
+      color:#6b375f;
+      opacity:0.9;
     }
-    .profile-center .small-desc {
-      font-size: 0.93em;
-      color: #0090bb;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      margin-top: 4px;
-      opacity: 0.8;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
-      font-weight: 700;
-      letter-spacing: 0.2px;
+
+    /* Paper modal */
+    .paper-wrap {
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+      z-index:99;
     }
-    .comments-balloon {
-      max-width: 370px;
-      margin: 3px auto 0 auto;
-      background: rgba(255,255,255,0.20);
-      border-radius: 11px;
-      border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 8px #b9eaff33;
-      padding: 10px 7px 9px 7px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 7px;
-      box-sizing: border-box;
-      z-index: 2;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-size: 0.97em;
-      opacity: 0.96;
-      position: relative;
+
+    .paper {
+      width:min(520px, 86%);
+      max-width:520px;
+      background: linear-gradient(180deg, var(--paper), #fff);
+      border-radius:10px;
+      padding:28px 26px;
+      box-shadow: 0 40px 90px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.12);
+      transform-origin:center;
+      opacity:0;
+      transform: translateY(20px) rotate(-6deg) scale(0.9);
+      transition:transform 560ms cubic-bezier(.2,.9,.25,1), opacity 260ms ease;
+      pointer-events:auto;
+      position:relative;
+      border: 1px solid rgba(0,0,0,0.06);
+      overflow:visible;
     }
-    .clear-chat-btn {
-      position: absolute;
-      top: 2px;
-      right: 8px;
-      z-index: 3;
-      background: none;
-      border: none;
-      font-size: 0.93em;
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0.77;
-      transition: opacity 0.14s, color 0.14s;
-      outline: none;
-      color: #00bfff;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff44;
-      padding: 0;
+
+    .paper.show {
+      opacity:1;
+      transform: translateY(0) rotate(0deg) scale(1);
     }
-    .clear-chat-btn:hover {
-      opacity: 1;
-      color: #ff91b7;
+
+    /* Paper texture via SVG filter + subtle fold */
+    .paper:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: repeating-linear-gradient(90deg, rgba(0,0,0,0.01) 0 1px, transparent 1px 8px);
+      mix-blend-mode: multiply;
+      opacity:0.07;
+      border-radius:10px;
+      pointer-events:none;
     }
-    .comments {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 1px;
+
+    /* Torn edges look */
+    .paper:after{
+      content:"";
+      position:absolute;
+      top:-10px;
+      left:4%;
+      width:92%;
+      height:12px;
+      background: radial-gradient(circle at 10% 50%, rgba(0,0,0,0.02), transparent 10%),
+                  linear-gradient(to bottom, rgba(0,0,0,0.02), transparent 30%);
+      transform: rotate(-2deg);
+      border-radius:50%;
+      opacity:0.9;
+      pointer-events:none;
     }
-    .comment {
-      background: rgba(200,200,200,0.18);
-      border-radius: 5px;
-      border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 2px rgba(100,100,110,0.07);
-      padding: 3px 7px 3px 7px;
-      font-size: 0.97em;
-      word-break: break-word;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
+
+    /* Handwritten message */
+    .message {
+      font-family: 'Shadows Into Light', 'Rubik', cursive;
+      font-size:28px;
+      color:#4b2b4b;
+      line-height:1.25;
+      white-space:pre-wrap;
+      text-align:center;
+      padding:12px 8px;
     }
-    .comment .author {
-      font-weight: bold;
-      color: #00bfff;
-      margin-right: 2px;
-      font-size: 0.98em;
+
+    /* cute tiny doodles on paper */
+    .paper .doodles {
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      margin-top:12px;
     }
-    .comment .badge {
-      font-size: 0.8em;
-      background: #e3faff;
-      color: #0090bb;
-      border-radius: 5px;
-      padding: 1px 5px;
-      margin-right: 3px;
-      margin-left: 1px;
-      font-weight: 700;
-      opacity: 0.84;
-      letter-spacing: 0.2px;
-      box-shadow: 0 1px 4px #b9eaff22;
-      border: 1px solid #b9eaff;
-      text-shadow: 0 1px 4px #fff;
+    .doodles svg { width:26px; height:26px; filter: drop-shadow(0 4px 8px rgba(122, 64, 129, 0.12)); }
+
+    /* close button */
+    .close {
+      position:absolute;
+      right:10px;
+      top:8px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      transition: transform 160ms;
     }
-    .comment .timestamp {
-      color: #408bad;
-      font-size: 0.83em;
-      margin-left: 5px;
-      opacity: 0.76;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-weight: 700;
-      text-shadow: 0 1px 6px #fff;
+    .close:active { transform: scale(.94); }
+
+    /* confetti pieces */
+    .confetti {
+      position:fixed;
+      pointer-events:none;
+      z-index:120;
+      inset:0;
+      overflow:visible;
     }
-    .comment-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      background: rgba(255,255,255,0.17);
-      border-radius: 4px;
-      border: 1px solid #bdbdbd;
-      box-shadow: 0 1px 2px rgba(100,100,110,0.05);
-      padding: 5px 4px 5px 4px;
-      margin-top: 0;
-      font-size: 0.97em;
-      box-sizing: border-box;
+    .confetti .piece {
+      position:absolute;
+      width:10px;
+      height:10px;
+      background:var(--accent1);
+      opacity:0.95;
+      transform-origin:center;
+      border-radius:2px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
     }
-    .comment-form input, .comment-form textarea {
-      font-family: inherit;
-      font-size: 0.97em;
-      border-radius: 3px;
-      border: 1px solid #00bfff;
-      padding: 4px 6px;
-      background: rgba(255,255,255,0.3);
-      resize: none;
-      outline: none;
+
+    /* sparkles background */
+    .sparkles {
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      mix-blend-mode: screen;
     }
-    .comment-form button {
-      background: #00bfff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 6px 0;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.97em;
-      box-shadow: 0 1px 2px #00bfff22;
-      transition: background 0.13s;
+    .sparkles .s {
+      position:absolute;
+      width:8px;
+      height:8px;
+      background: radial-gradient(circle at 30% 30%, #fff 0%, rgba(255,255,255,0.6) 30%, transparent 60%);
+      filter: blur(1px);
+      opacity:0.9;
+      transform: rotate(0deg);
+      animation: twinkle 4s infinite;
     }
-    .comment-form button:hover {
-      background: #0080c0;
+    @keyframes twinkle {
+      0%,100%{ transform: scale(1); opacity:0.9; }
+      50%{ transform: scale(1.6); opacity:0.4; }
     }
-    /* Popup glass effect */
-    .popup-bg {
-      position: fixed;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.04);
-      backdrop-filter: blur(2.4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99;
-      animation: fadeIn 0.4s;
+
+    /* small footer sweetness */
+    .footer-note {
+      margin-top:14px;
+      font-size:12px;
+      color:#6b375f;
+      opacity:0.9;
     }
-    @keyframes fadeIn {
-      from { opacity: 0;}
-      to { opacity: 1;}
+
+    /* Responsive */
+    @media (max-width:520px){
+      .y2k-btn { width:90%; height:64px; border-radius:22px; }
+      .title { font-size:20px; padding:8px 14px; }
+      .paper { padding:18px; }
+      .message { font-size:22px; }
     }
-    .popup-balloon {
-      background: rgba(255,255,255,0.40);
-      /* ŞEFFAFLIK ARTTIRILDI */
-      backdrop-filter: blur(9.6px);
-      border-radius: 15px;
-      border: 1.2px solid #96e2ff;
-      box-shadow: 0 0 14px #a6eaff44, 0 0 0 #fff;
-      padding: 15px 19px 10px 19px;
-      min-width: 80px;
-      max-width: 78vw;
-      position: relative;
-      text-align: center;
-      font-size: 1em;
-      color: #0090bb;
-      font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      animation: popin 0.3s;
-      filter: drop-shadow(0 0 9px #b2faff44);
-      overflow: hidden;
-      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff33, 0 0 8px #bdf7ff44;
-      opacity: 0.97;
-    }
-    @keyframes popin {
-      from { transform: scale(0.7);}
-      to { transform: scale(1);}
-    }
-    .popup-heart {
-      font-size: 1.18em;
-      margin-bottom: 7px;
-      margin-top: -2px;
-      color: #ff91b7;
-      animation: popupGlow 1.2s infinite alternate;
-      text-shadow: 0 0 11px #ff91b7, 0 0 4px #fff, 0 2px 7px #fff;
-      filter: blur(0.13px) brightness(1.07);
-    }
-    @keyframes popupGlow {
-      0% { text-shadow: 0 0 9px #ff91b7, 0 0 3px #fff;}
-      100% { text-shadow: 0 0 18px #ff91b7, 0 0 8px #fff;}
-    }
-    .popup-content {
-      font-size: 1em;
-      color: #0090bb;
-      font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
-      font-weight: 700;
-      text-shadow: 0 1px 7px #fff, 0 1px 2px #00bfff33, 0 0px 8px #bdf7ff22;
-      margin-bottom: 4px;
-      margin-top: 1px;
-      padding: 2px 0;
-      line-height: 1.3em;
-      letter-spacing: 0.2px;
-      /* Linkler için gözükmesi için alt çizgi yok ve renkli */
-    }
-    .popup-content a {
-      color: #37b7ff;
-      font-weight: bold;
-      text-decoration: none;
-      transition: color 0.14s;
-    }
-    .popup-content a:hover {
-      color: #ff91b7;
-      text-decoration: underline;
-    }
-    .popup-close {
-      position: absolute;
-      top: 8px; right: 14px;
-      background: none;
-      font-size: 1em;
-      color: #37b7ff;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      opacity: 0.7;
-      text-shadow: 0 1px 8px #fff;
-      transition: color 0.13s;
-    }
-    .popup-close:hover { opacity: 1; color: #ff91b7;}
-    @media (max-width: 540px) {
-      .container, .comments-balloon {max-width: 99vw;}
-      .popup-balloon {min-width: 37vw; padding: 5vw 2vw 6vw 2vw;}
-      .info-bubble { font-size: 0.98em; min-width: 60px;}
-      .profile-center img { width: 60px; height: 60px; }
-      .clock-bubble { font-size: 1em; padding: 5px 5vw;}
-      .clear-chat-btn {width: 15px; height: 15px; font-size:0.85em;}
-    }
+
   </style>
 </head>
 <body>
-  <div class="background-opacity"></div>
-  <div class="center-wrap">
-    <div class="container">
-      <div class="clock-bar">
-        <div class="clock-bubble" id="clockBubble"></div>
+  <div class="grid" aria-hidden="true"></div>
+
+  <!-- Floating stickers -->
+  <svg class="sticker t1" viewBox="0 0 64 64" style="width:72px;height:72px;">
+    <g>
+      <circle cx="32" cy="32" r="30" fill="#ffecf6" stroke="#ffb3dd" stroke-width="2"/>
+      <path d="M20 36c4 6 12 6 16 0" stroke="#ff6fb1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M28 24c1.5-3 6-4 8 0" stroke="#ff6fb1" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+
+  <svg class="sticker t2" viewBox="0 0 64 64" style="width:64px;height:64px;">
+    <g>
+      <rect x="6" y="6" width="52" height="52" rx="12" fill="#ecfff9" stroke="#8ef0d6" stroke-width="2"/>
+      <path d="M18 34c6 8 18 8 24 0" stroke="#6fe6c9" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+
+  <svg class="sticker t3" viewBox="0 0 64 64" style="width:66px;height:66px;">
+    <g>
+      <circle cx="14" cy="16" r="10" fill="#fff6e8" stroke="#ffd89a" stroke-width="2"/>
+      <circle cx="50" cy="42" r="12" fill="#fff1ff" stroke="#ffc3f0" stroke-width="2"/>
+    </g>
+  </svg>
+
+  <div class="stage">
+    <div class="title" role="img" aria-label="for astie :3">
+      <div class="spark" aria-hidden="true"></div>
+      for astie :3
+    </div>
+
+    <div class="card" role="region" aria-label="cute card">
+      <div class="desc">
+        bir tane tam Y2K cute-core buton ve sürpriz kağıt efekti hazırladım! Düğmeye tıkla 🌸
       </div>
-      <div class="bubble-row">
-        <div class="info-bubble" onclick="showPopup('games')">Games ^~^</div>
-        <div class="info-bubble" onclick="showPopup('bestfriends')">Bestfriends! ^w^</div>
+
+      <button class="y2k-btn" id="openBtn" aria-haspopup="dialog" aria-controls="paper" aria-expanded="false">
+        <div class="shine" aria-hidden="true"></div>
+        open the cute surprise!
+      </button>
+
+      <div class="small-hint">(düğmeye basınca tatlı bir kağıt ve not belirecek ✨)</div>
+
+      <div class="footer-note">çok fazla detay ekledim — yıldızlar, çıkartmalar, ışıltılar ve küçük konfeti patlaması 💖</div>
+    </div>
+  </div>
+
+  <!-- Paper modal -->
+  <div class="paper-wrap" id="paperWrap" aria-hidden="true">
+    <div class="paper" id="paper" role="dialog" aria-modal="true" aria-labelledby="paperMessage">
+      <button class="close" id="closeBtn" aria-label="Kapat">✕</button>
+      <div class="message" id="paperMessage">
+you're the most cute person I've ever met, astie &lt;3
       </div>
-      <div class="profile-center-wrap">
-        <div class="profile-username-top">
-          <a href="https://instagram.com/m1miiqz.x1" target="_blank">@m1miiqz.x1</a>
-        </div>
-        <div class="profile-center">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiN1w5nhVYPpivcdO1ZvneOqw5jFpon1XjCg&usqp=CAU" alt="Profile Picture">
-          <div class="profile-texts">
-            <div class="bio">DogBoy🦴</div>
-            <div class="small-desc">The only thing I know about myself is that I have no brain &gt;.&lt;</div>
-          </div>
-        </div>
-      </div>
-      <div class="comments-balloon">
-        <button class="clear-chat-btn" title="Clear chat" onclick="clearChat()" aria-label="Clear chat">🗑️</button>
-        <div class="comments" id="comments"></div>
-        <form class="comment-form" id="commentForm">
-          <input type="text" id="author" placeholder="Your Name" required maxlength="24">
-          <textarea id="commentText" rows="2" placeholder="Your message..." required maxlength="180"></textarea>
-          <button type="submit">Send</button>
-          <button type="submit">I can't see your messages yet, wait for the new update :(</button>
-        </form>
+
+      <div class="doodles" aria-hidden="true">
+        <!-- small doodles -->
+        <svg viewBox="0 0 24 24"><path d="M12 3l2.5 4.8L20 9l-4 3.5L17 20l-5-2.8L7 20l1-7.5L4 9l5.5-.2L12 3z" fill="#ffd77a"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2C8 2 6 6 6 8s2 4 6 4 6-2 6-4-2-6-6-6z" fill="#ffb0db"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 21s-4-3.2-6-5c-1.6-1.6-2-4-1-5 1.4-1.6 4-1 5 1 1-2 4-2.6 5-1 1 1 0.6 3.4-1 5-2 1.8-6 5-6 5z" fill="#7ad2ff"/></svg>
       </div>
     </div>
   </div>
-  <!-- Popup balloon -->
-  <div id="popupBG" style="display:none;">
-    <div class="popup-bg" onclick="closePopup(event)">
-      <div class="popup-balloon" id="popupContent" onclick="event.stopPropagation();"></div>
-    </div>
+
+  <!-- confetti container -->
+  <div class="confetti" id="confetti"></div>
+
+  <!-- sparkles -->
+  <div class="sparkles" aria-hidden="true">
+    <div class="s" style="left:6%;top:12%;animation-delay:0.2s;width:10px;height:10px;background:radial-gradient(circle,#fff 0,#ffd6f0 40%);"></div>
+    <div class="s" style="left:20%;top:40%;animation-delay:1.1s;width:8px;height:8px;background:radial-gradient(circle,#fff 0,#d6f7ff 40%);"></div>
+    <div class="s" style="left:82%;top:22%;animation-delay:0.4s;width:12px;height:12px;background:radial-gradient(circle,#fff 0,#fff7d6 40%);"></div>
+    <div class="s" style="left:68%;top:72%;animation-delay:2.2s;width:9px;height:9px;background:radial-gradient(circle,#fff 0,#ffd1f0 40%);"></div>
   </div>
+
   <script>
-    // Clock at top (shows Istanbul time, no label)
-    function updateClockBubble() {
-      const now = new Date();
-      const trOffset = new Date().getTimezoneOffset();
-      const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
-      const hh = trTime.getHours().toString().padStart(2,'0');
-      const mm = trTime.getMinutes().toString().padStart(2,'0');
-      const ss = trTime.getSeconds().toString().padStart(2,'0');
-      document.getElementById('clockBubble').textContent =
-        `${hh}:${mm}:${ss}`;
-    }
-    updateClockBubble();
-    setInterval(updateClockBubble, 1000);
+    // Elements
+    const openBtn = document.getElementById('openBtn');
+    const paper = document.getElementById('paper');
+    const paperWrap = document.getElementById('paperWrap');
+    const closeBtn = document.getElementById('closeBtn');
+    const confettiEl = document.getElementById('confetti');
+    const messageEl = document.getElementById('paperMessage');
 
-    // Popup open function
-    function showPopup(type) {
-      let content = '';
-      if(type === 'games') {
-        content = `<div class="popup-heart">:3</div>
-          <div class="popup-content">
-            <span style="color:#37b7ff;font-weight:bold;">Roblox:</span> boreas1709<br>
-            <span style="color:#37b7ff;font-weight:bold;">War Thunder Mobile:</span> Yukarı Akiyama<br>
-            <span style="color:#37b7ff;font-weight:bold;">Minecraft:</span> VeXa8758
-          </div>`;
-      } else if(type === 'bestfriends') {
-        content = `<div class="popup-heart">(⁠ ⁠◜⁠‿⁠◝⁠ ⁠)</div>
-          <div class="popup-content">
-            My Instagram best friends:<br>
-            <a href="https://instagram.com/y0n6qz.t" target="_blank">@y0n6qz.t</a><br>
-            <a href="https://instagram.com/cinar.d138" target="_blank">@cinar.d138</a><br>
-            <a href="https://instagram.com/rainbows._.dashie" target="_blank">@rainbows._.dashie</a><br>
-            <a href="https://instagram.com/kris.sirg" target="_blank">@kris.sirg</a><br>
-            <a href="https://instagram.com/juliachristinne" target="_blank">@juliachristinne</a>
-          </div>`;
-      }
-      document.getElementById('popupContent').innerHTML =
-         `<button class="popup-close" onclick="closePopup(event)" title="Close">&times;</button>
-         ${content}`;
-      document.getElementById('popupBG').style.display = 'block';
-    }
-    function closePopup(e) {
-      document.getElementById('popupBG').style.display = 'none';
-    }
+    // Ensure message exactly as requested
+    const messageText = "you're the most cute person I've ever met, astie <3";
+    messageEl.textContent = messageText;
 
-    // Comments (no delete)
-    const commentsEl = document.getElementById('comments');
-    const form = document.getElementById('commentForm');
-    let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
-    let savedAuthor = localStorage.getItem('blogAuthor') || "";
-    document.getElementById('author').value = savedAuthor;
+    // Function to create a confetti burst
+    function burstConfetti(x = window.innerWidth/2, y = window.innerHeight/2){
+      const colors = ['#ffb3db','#ffd77a','#7ad2ff','#b6ffc4','#ffd8f2','#cdb3ff'];
+      const count = 28;
+      for(let i=0;i<count;i++){
+        const el = document.createElement('div');
+        el.className = 'piece';
+        const size = Math.random()*10 + 6;
+        el.style.width = size+'px';
+        el.style.height = Math.max(size*0.6,6)+'px';
+        el.style.left = (x - 10 + (Math.random()*40 - 20)) + 'px';
+        el.style.top = (y - 10 + (Math.random()*40 - 20)) + 'px';
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.transform = `rotate(${Math.random()*360}deg)`;
+        confettiEl.appendChild(el);
 
-    function renderComments() {
-      commentsEl.innerHTML = '';
-      if(comments.length === 0) {
-        commentsEl.innerHTML = '<div style="text-align:center;color:#7bcddb;font-size:0.98em;padding:7px;">No comments yet. Be the first!</div>';
-      } else {
-        comments.forEach((c) => {
-          const el = document.createElement('div');
-          el.className = 'comment';
-          let badgeText = '';
-          if(c.author.toLowerCase() === 'mimityph638') badgeText = '<span class="badge">admin</span>';
-          else badgeText = '<span class="badge">guest</span>';
-          el.innerHTML = `${badgeText}<span class="author">${c.author}</span> ${c.text} <span class="timestamp">${c.time}</span>`;
-          commentsEl.appendChild(el);
+        // animate piece
+        const toX = (Math.random() - 0.5) * 300;
+        const toY = (Math.random() - 0.5) * 400 + 60;
+        const rot = (Math.random()*720 - 360);
+        el.animate([
+          { transform: `translate(0,0) rotate(0deg)`, opacity:1 },
+          { transform: `translate(${toX}px, ${toY}px) rotate(${rot}deg)`, opacity:0 }
+        ], {
+          duration: 1200 + Math.random()*900,
+          easing: 'cubic-bezier(.15,.9,.3,1)'
         });
+
+        // remove after animation
+        setTimeout(()=> el.remove(), 2400);
       }
     }
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const authorInput = document.getElementById('author');
-      const author = authorInput.value.trim();
-      const text = document.getElementById('commentText').value.trim();
-      if(author && text) {
-        // Istanbul time
-        const now = new Date();
-        const trOffset = new Date().getTimezoneOffset();
-        const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
-        const hh = trTime.getHours().toString().padStart(2,'0');
-        const mm = trTime.getMinutes().toString().padStart(2,'0');
-        const ss = trTime.getSeconds().toString().padStart(2,'0');
-        const day = trTime.getDate().toString().padStart(2,'0');
-        const month = (trTime.getMonth()+1).toString().padStart(2,'0');
-        const year = trTime.getFullYear();
-        const timeString = `${day}.${month}.${year} ${hh}:${mm}:${ss}`;
-        comments.push({author, text, time: timeString});
-        localStorage.setItem('blogComments', JSON.stringify(comments));
-        localStorage.setItem('blogAuthor', author); // save name
-        renderComments();
-        form.reset();
-        authorInput.value = author; // restore name
+
+    function openPaper(){
+      paper.classList.add('show');
+      paperWrap.setAttribute('aria-hidden', 'false');
+      openBtn.setAttribute('aria-expanded', 'true');
+
+      // small vibrate-ish pop
+      paper.animate([
+        { transform: 'scale(0.98) rotate(-6deg) translateY(10px)' },
+        { transform: 'scale(1.02) rotate(3deg) translateY(-6px)' },
+        { transform: 'scale(1) rotate(0deg) translateY(0)' }
+      ], { duration: 420, easing: 'cubic-bezier(.2,.9,.25,1)' });
+
+      // confetti burst from button center
+      const rect = openBtn.getBoundingClientRect();
+      burstConfetti(rect.left + rect.width/2, rect.top + rect.height/2);
+    }
+
+    function closePaper(){
+      paper.classList.remove('show');
+      paperWrap.setAttribute('aria-hidden', 'true');
+      openBtn.setAttribute('aria-expanded', 'false');
+      // small closing confetti
+      const rect = closeBtn.getBoundingClientRect();
+      burstConfetti(rect.left + rect.width/2, rect.top + rect.height/2);
+    }
+
+    openBtn.addEventListener('click', openPaper);
+    closeBtn.addEventListener('click', closePaper);
+
+    // Close when clicking outside paper
+    paperWrap.addEventListener('click', (e)=>{
+      if(!paper.contains(e.target)) closePaper();
+    });
+
+    // Keyboard accessibility
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closePaper();
+      if((e.key === 'Enter' || e.key === ' ') && document.activeElement === openBtn){
+        e.preventDefault();
+        openPaper();
       }
     });
 
-    // Clear chat fonksiyonu
-    function clearChat() {
-      if(confirm('Are you sure you want to clear all comments?')) {
-        comments = [];
-        localStorage.setItem('blogComments', "[]");
-        renderComments();
-      }
-    }
+    // Little guided pointer: animate a small heart near the button to draw attention
+    (function tinyPointer(){
+      const hint = document.createElement('div');
+      hint.style.position = 'absolute';
+      hint.style.width = '12px';
+      hint.style.height = '12px';
+      hint.style.left = '50%';
+      hint.style.top = '60%';
+      hint.style.transform = 'translate(-50%,-50%)';
+      hint.style.pointerEvents = 'none';
+      hint.style.zIndex = '5';
+      hint.innerHTML = '<svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 21s-8-5.5-8-11a4 4 0 0 1 6-3 4 4 0 0 1 6 3c0 5.5-8 11-8 11z" fill="#ffb3db"/></svg>';
+      document.querySelector('.stage').appendChild(hint);
+      hint.animate([
+        { transform: 'translate(-50%,-50%) translateY(0) scale(1)', opacity:1 },
+        { transform: 'translate(-50%,-70%) translateY(-8px) scale(1.15)', opacity:0.9 },
+        { transform: 'translate(-50%,-50%) translateY(0) scale(1)', opacity:1 }
+      ], { duration: 1800, iterations: Infinity, easing: 'ease-in-out' });
+    })();
 
-    renderComments();
+    // Tiny accessibility: focus trap when dialog open
+    paper.addEventListener('keydown', (e)=>{
+      if(e.key === 'Tab') {
+        // simple trap: keep focus to close button if tabbing
+        e.preventDefault();
+        closeBtn.focus();
+      }
+    });
+
   </script>
 </body>
-</html>
+        </html>
