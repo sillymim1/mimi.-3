@@ -1,250 +1,493 @@
 <!doctype html>
 <html lang="tr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>for astie :3</title>
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Baloo+2:wght@400;700&family=Courier+Prime&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg1:#ffd7f0; --bg2:#d6f2ff;
-    --accent:#ff78b6; --accent2:#9ad6ff;
-    --paper:#fffef8; --heart1:#ff6aa6; --heart2:#ffd2ea;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family:"Baloo 2",system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6), transparent 8%),
-                linear-gradient(135deg,var(--bg1),var(--bg2));
-    overflow:hidden;color:#222;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>for astie :3</title>
+  <style>
+    /* ===== Reset & base ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, #ffd6f0 0%, transparent 8%),
+                  radial-gradient(900px 400px at 90% 90%, #d3f2ff 0%, transparent 7%),
+                  linear-gradient(180deg, #fff7ff 0%, #fefefe 100%);
+      color: #333;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 30px;
+      overflow: hidden;
+    }
 
-  /* header */
-  header{padding:28px 12px;text-align:center;z-index:6}
-  header h1{
-    font-family:"Sacramento",cursive;font-size:44px;color:#fff;
-    text-shadow:0 8px 24px rgba(200,80,140,0.18);
-    display:inline-block;padding:10px 18px;border-radius:18px;background:rgba(255,255,255,0.06);
-    border:2px solid rgba(255,255,255,0.35);
-  }
+    /* ===== Page frame ===== */
+    .scene {
+      width: min(980px, 96%);
+      max-width: 1120px;
+      height: min(720px, 86vh);
+      background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,250,255,0.9));
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+      position: relative;
+      padding: 28px;
+      overflow: hidden;
+      border: 2px dashed rgba(255,182,193,0.25);
+    }
 
-  .stage{height:calc(100% - 120px);display:flex;align-items:center;justify-content:center;gap:28px;padding:18px;position:relative}
+    /* ===== Header ===== */
+    header {
+      width:100%;
+      text-align:center;
+      margin-bottom: 10px;
+      pointer-events: none;
+    }
+    .title {
+      font-weight: 700;
+      letter-spacing: .6px;
+      color: #ff4da6;
+      font-size: 22px;
+      text-shadow: 0 1px 0 #fff, 0 6px 18px rgba(255,77,166,0.14);
+    }
+    .subtitle {
+      margin-top:6px;
+      font-size:13px;
+      color:#ff6fb0;
+      opacity:.9;
+    }
 
-  /* Side pony stickers (stylized/original) */
-  .pony{position:fixed;top:52%;width:160px;height:240px;transform:translateY(-50%);pointer-events:none;z-index:5;filter:drop-shadow(0 14px 36px rgba(0,0,0,0.15))}
-  .pony.left{left:8px;animation:floatL 4.6s ease-in-out infinite}
-  .pony.right{right:8px;animation:floatR 4.6s ease-in-out infinite;transform:translateY(-50%) scaleX(-1)}
-  @keyframes floatL{0%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(-54%) translateX(-8px)}100%{transform:translateY(-50%) translateX(0)}}
-  @keyframes floatR{0%{transform:translateY(-50%) scaleX(-1) translateX(0)}50%{transform:translateY(-54%) scaleX(-1) translateX(8px)}100%{transform:translateY(-50%) scaleX(-1) translateX(0)}}
+    /* ===== Decorative sparkles, badges, ribbons ===== */
+    .sparkle {
+      position:absolute;
+      width:12px;height:12px;
+      background: radial-gradient(circle at 30% 30%, #fff 0%, rgba(255,255,255,0) 30%), linear-gradient(90deg,#ffd9ee,#ffe0b8);
+      transform: rotate(25deg);
+      border-radius: 4px;
+      filter: drop-shadow(0 3px 10px rgba(255,135,185,0.12));
+      opacity: .9;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    .sparkle.x1 { left: 12%; top: 8%; animation-delay: 0s; }
+    .sparkle.x2 { left: 80%; top: 10%; animation-delay: .8s; transform: rotate(-18deg); }
+    .sparkle.x3 { left: 6%; bottom: 18%; animation-delay: .6s; transform: rotate(10deg); }
+    .sparkle.x4 { right: 8%; bottom: 8%; animation-delay: 1.2s; transform: rotate(35deg); }
 
-  /* Button */
-  .cute-button{--h:74px;display:inline-flex;align-items:center;gap:14px;padding:0 26px;height:var(--h);
-    background:linear-gradient(135deg,var(--accent),#ffd27a);border-radius:30px;border:4px solid rgba(255,255,255,0.6);
-    box-shadow:0 16px 40px rgba(255,120,170,0.16), inset 0 -6px 16px rgba(255,255,255,0.32);
-    font-weight:800;color:#fff;font-size:20px;cursor:pointer;z-index:7}
-  .cute-button:active{transform:translateY(2px)}
-  .cute-button .icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(#fff7ff,#ffddef);color:#ff4d9e;font-weight:900;box-shadow:0 8px 20px rgba(255,80,140,0.12)}
+    @keyframes twinkle {
+      0%{ transform: scale(.9) rotate(25deg); opacity:.85 }
+      50%{ transform: scale(1.25) rotate(25deg); opacity:1 }
+      100%{ transform: scale(.9) rotate(25deg); opacity:.85 }
+    }
 
-  /* paper */
-  .paper-wrap{width:460px;height:320px;perspective:1400px;position:relative;z-index:8}
-  .paper{
-    width:100%;height:100%;background:linear-gradient(180deg,var(--paper),#fff4e6);border-radius:18px;
-    box-shadow:0 48px 100px rgba(0,0,0,0.22), inset 0 8px 24px rgba(255,255,255,0.6);
-    transform-origin:top center;transform:rotateX(-96deg) translateY(-8px);transition:transform .95s cubic-bezier(.16,.9,.37,1),opacity .25s;
-    opacity:0;display:flex;align-items:center;justify-content:center;padding:38px;position:relative;overflow:visible;
-  }
-  .paper.open{transform:rotateX(0deg) translateY(0);opacity:1}
+    /* ===== Pony characters (left & right) ===== */
+    .pony {
+      position:absolute;
+      width:160px;
+      max-width:22%;
+      bottom:18px;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,0.08));
+      opacity: .98;
+    }
+    .pony.left { left: 18px; transform: translateY(6px); }
+    .pony.right { right: 18px; transform: scaleX(-1) translateY(6px); }
 
-  /* textured */
-  .paper:before{content:"";position:absolute;inset:0;border-radius:18px;background-image:
-    linear-gradient(transparent 0 6px, rgba(0,0,0,0.02) 6px),
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.01) 0 1px, transparent 1px 14px);opacity:.45;mix-blend-mode:multiply;pointer-events:none}
+    /* ===== Content area ===== */
+    .center {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height: calc(100% - 70px);
+      gap: 28px;
+      position: relative;
+      z-index: 5;
+    }
 
-  /* hearts edge using SVG hearts placed absolutely */
-  .edge-svg{position:absolute;inset:0;pointer-events:none;z-index:6}
+    /* ===== Cute details block behind paper ===== */
+    .decor {
+      width: 340px;
+      max-width: 40%;
+      min-width: 260px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,248,255,0.7));
+      box-shadow: 0 8px 28px rgba(255,110,170,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,183,211,0.25);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:center;
+    }
 
-  /* text: big, shiny, handwritten-like with stroke/glow */
-  .paper p{
-    font-family:"Sacramento",cursive; font-size:32px; line-height:1.15; margin:0; text-align:center; position:relative; z-index:3;
-    letter-spacing:0.4px; color:transparent; background:linear-gradient(90deg,#ff4d9e,#ff98d6 45%,#7cc9ff 100%);
-    -webkit-background-clip:text;background-clip:text;
-    text-shadow:
-      0 1px 0 rgba(0,0,0,0.03),
-      0 6px 18px rgba(255,100,160,0.12);
-  }
+    .decor .cute-list {
+      width:100%;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .badge {
+      background: linear-gradient(180deg,#fff6ff,#fff0ff);
+      padding:6px 10px;
+      border-radius: 999px;
+      font-size:13px;
+      color:#ff4da6;
+      border:1px solid rgba(255,77,166,0.12);
+      box-shadow: 0 6px 14px rgba(255,72,150,0.06);
+    }
+    .big-badge {
+      font-size:15px; padding:10px 14px; font-weight:700;
+      color:#8a2b62; background: linear-gradient(180deg,#fff1f8,#ffdff0);
+    }
 
-  /* subtle shine slide */
-  .paper p::after{
-    content:"";position:absolute;left:-30%;top:-10%;width:60%;height:140%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.7),rgba(255,255,255,0));transform:rotate(-18deg) translateX(-110%);mix-blend-mode:screen;pointer-events:none;
-    animation:shine 2s ease-out 0.25s forwards;
-  }
-  @keyframes shine{to{transform:rotate(-18deg) translateX(110%)}}  
+    /* ===== Button ===== */
+    .btn-wrap {
+      display:flex;
+      justify-content:center;
+      margin-top:6px;
+      width:100%;
+    }
+    .open-btn {
+      appearance:none;
+      border: none;
+      cursor:pointer;
+      padding: 12px 22px;
+      background: linear-gradient(180deg,#ff71b8,#ff4da6);
+      color: white;
+      font-weight:800;
+      border-radius: 999px;
+      font-size:16px;
+      letter-spacing:.6px;
+      box-shadow: 0 10px 28px rgba(255,77,166,0.14);
+      transform: translateY(0);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .open-btn:active { transform: translateY(2px); box-shadow: 0 6px 18px rgba(255,77,166,0.12); }
 
-  /* handwriting (reveal) animation — reveals same sentence letter-by-letter */
-  .typewrap{display:inline-block;overflow:hidden;vertical-align:middle}
-  .typewrap .typed{display:inline-block;white-space:pre;transform:translateY(0);animation:reveal 2.6s steps(60,end) 0.12s forwards}
-  @keyframes reveal{from{max-width:0} to{max-width:100%}}
+    /* ===== Paper (centerpiece) ===== */
+    .stage {
+      perspective: 1200px;
+      width: 420px;
+      max-width: 54%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position: relative;
+      min-height: 320px;
+    }
 
-  /* underline ink blur */
-  .paper p::before{content:"";position:absolute;left:12%;right:12%;bottom:16%;height:8px;background:linear-gradient(90deg,rgba(255,120,180,0.12),rgba(255,210,235,0.06));border-radius:8px;z-index:2}
+    .paper {
+      width: 320px;
+      max-width: 88%;
+      height: 160px;
+      transform-style: preserve-3d;
+      transform-origin: top center;
+      transition: transform 900ms cubic-bezier(.17,.8,.03,1), height 600ms ease;
+      position: relative;
+      z-index: 6;
+    }
 
-  .paper .sticker{position:absolute;top:12px;right:12px;width:46px;height:46px;border-radius:10px;background:linear-gradient(180deg,#fff0ff,#ffdced);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;font-weight:900;color:#ff4d9e;z-index:7;box-shadow:0 10px 26px rgba(255,120,180,0.12)}
+    /* paper background and edge */
+    .sheet {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg,#fffdf9,#fff8f2);
+      border-radius: 10px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.04);
+      position: absolute;
+      top: 0; left: 0;
+      overflow: hidden;
+      transform-origin: top center;
+      backface-visibility: hidden;
+    }
 
-  /* tiny floating hearts */
-  .floating{position:absolute;pointer-events:none;z-index:7}
-  .heart{width:18px;height:18px;background:linear-gradient(180deg,var(--heart1),var(--heart2));transform:rotate(-45deg);border-radius:3px;box-shadow:0 10px 26px rgba(255,90,150,0.12);animation:float 3.6s ease-in-out infinite}
-  @keyframes float{0%{transform:translateY(0) rotate(-45deg)}50%{transform:translateY(-14px) rotate(-45deg)}100%{transform:translateY(0) rotate(-45deg)}}
+    /* top fold (flap) that rotates open */
+    .fold {
+      position:absolute;
+      width:100%;
+      height:42%;
+      top:0;
+      left:0;
+      transform-origin: top center;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background: linear-gradient(180deg,#fff6f8,#fff8f6);
+      border-bottom: 1px dashed rgba(255,150,185,0.15);
+      box-shadow: inset 0 -6px 24px rgba(0,0,0,0.03);
+      z-index: 4;
+      transition: transform 900ms cubic-bezier(.17,.8,.03,1);
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      padding-bottom: 8px;
+    }
 
-  /* pony sticker under paper */
-  .pony-sticker{position:absolute;left:50%;bottom:-36px;transform:translateX(-50%);width:140px;height:68px;z-index:6;filter:drop-shadow(0 12px 30px rgba(0,0,0,0.12));pointer-events:none}
+    /* small sticker on flap */
+    .sticker {
+      font-size:11px;
+      padding:6px 10px;
+      background: linear-gradient(180deg,#fff,#ffeef7);
+      border-radius: 999px;
+      color:#ff4da6;
+      border:1px solid rgba(255,77,166,0.08);
+      box-shadow: 0 6px 18px rgba(255,77,166,0.06);
+      font-weight:700;
+    }
 
-  @media(max-width:760px){.pony{display:none}.paper-wrap{width:360px;height:260px}.paper p{font-size:26px}}
-</style>
+    /* inside content area (initially hidden) */
+    .message-wrap {
+      position:absolute;
+      top: 42%;
+      left: 0;
+      width:100%;
+      height: calc(58% - 4px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px 18px;
+      opacity: 0;
+      transform: translateY(8px) scale(.98);
+      transition: opacity 420ms ease 140ms, transform 420ms ease 140ms;
+      z-index:3;
+    }
+
+    .message {
+      font-size:12px; /* küçük yazı */
+      font-weight:700; /* kalın yazı efekti */
+      color:#6a1144;
+      text-align:center;
+      line-height:1.45;
+      letter-spacing:.2px;
+    }
+
+    /* hearts down the sides of the paper (kağıt içinde) */
+    .hearts-left, .hearts-right {
+      position:absolute;
+      top: 46%;
+      transform: translateY(-10%);
+      width:16px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      align-items:center;
+      z-index:5;
+      opacity:0;
+      transition: opacity 360ms ease 120ms;
+    }
+    .hearts-left { left: -24px; }
+    .hearts-right { right: -24px; }
+
+    .mini-heart {
+      width:12px;height:12px;
+      background: linear-gradient(180deg,#ff99c6,#ff4da6);
+      clip-path: polygon(50% 0%, 61% 12%, 75% 12%, 88% 12%, 100% 25%, 88% 60%, 50% 100%, 12% 60%, 0 25%, 12% 12%, 25% 12%, 39% 12%);
+      transform-origin:center;
+      animation: pop 1.8s ease-in-out infinite;
+      box-shadow: 0 6px 18px rgba(255,77,166,0.08);
+    }
+    .mini-heart:nth-child(2) { animation-delay: .18s; transform: scale(.92); }
+    .mini-heart:nth-child(3) { animation-delay: .38s; transform: scale(.86); }
+
+    @keyframes pop {
+      0%{ transform: translateY(0) scale(1); opacity:.95; }
+      50%{ transform: translateY(-6px) scale(1.08); opacity:1; }
+      100%{ transform: translateY(0) scale(1); opacity:.95; }
+    }
+
+    /* ===== Open state (after button click) ===== */
+    .paper.open { height: 320px; }
+    .paper.open .fold { transform: rotateX(-160deg) translateZ(-1px); box-shadow: none; }
+    .paper.open .sheet { border-radius: 10px; }
+    .paper.open .message-wrap { opacity:1; transform: translateY(0) scale(1); }
+    .paper.open .hearts-left, .paper.open .hearts-right { opacity:1; }
+
+    /* small responsive tweaks */
+    @media (max-width: 820px) {
+      .scene { padding: 18px; border-radius: 20px; }
+      .pony { display:none; }
+      .center { gap:12px; }
+      .stage { width: 320px; min-height: 300px; }
+      .decor { display:none; }
+      .paper { width: 88%; height:150px; }
+      .paper.open { height: 300px; }
+    }
+  </style>
 </head>
 <body>
+  <div class="scene" role="main" aria-label="Cute core site for Astie">
+    <header>
+      <div class="title">for astie :3</div>
+      <div class="subtitle">a tiny cute surprise</div>
+    </header>
 
-<header><h1>for astie :3</h1></header>
+    <!-- sparkles -->
+    <div class="sparkle x1" aria-hidden="true"></div>
+    <div class="sparkle x2" aria-hidden="true"></div>
+    <div class="sparkle x3" aria-hidden="true"></div>
+    <div class="sparkle x4" aria-hidden="true"></div>
 
-<main class="stage" role="main" aria-label="Cute stage">
-
-  <!-- left & right pony SVGs (original, pony-inspired) -->
-  <svg class="pony left" viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs><filter id="sdL"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#ffb8e0" flood-opacity="0.12"/></filter></defs>
-    <g filter="url(#sdL)">
-      <ellipse cx="80" cy="140" rx="46" ry="56" fill="#fffaf8"/>
-      <circle cx="62" cy="86" r="36" fill="#fff"/>
-      <path d="M42 68 C26 58, 34 110, 58 110 C78 110,90 88,74 78 C64 72,52 78,42 68" fill="#e8d4ff"/>
-      <path d="M48 52 C36 44,46 38,62 42 C76 46,84 66,74 70" fill="#ffd7f4" opacity="0.95"/>
-      <ellipse cx="54" cy="86" rx="10" ry="13" fill="#fff"/>
-      <circle cx="58" cy="86" r="5" fill="#4a2b7a"/>
-      <circle cx="60" cy="82" r="2" fill="#fff"/>
-      <path d="M70 52 L76 28 L82 52 Z" fill="#ffe8ff"/>
-      <path d="M118 150 C132 146,140 128,132 118 C120 102,100 128,98 140" fill="#e9d4ff"/>
-    </g>
-  </svg>
-
-  <svg class="pony right" viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs><filter id="sdR"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#cfe8ff" flood-opacity="0.12"/></filter></defs>
-    <g filter="url(#sdR)">
-      <ellipse cx="80" cy="140" rx="46" ry="56" fill="#fffaf8"/>
-      <circle cx="98" cy="86" r="36" fill="#fff"/>
-      <path d="M118 68 C134 58,126 110,102 110 C82 110,70 88,86 78 C96 72,108 78,118 68" fill="#d6f0ff"/>
-      <path d="M112 52 C124 44,114 38,98 42 C86 46,78 66,86 70" fill="#ffd7f4" opacity="0.95"/>
-      <ellipse cx="106" cy="86" rx="10" ry="13" fill="#fff"/>
-      <circle cx="102" cy="86" r="5" fill="#4a2b7a"/>
-      <circle cx="100" cy="82" r="2" fill="#fff"/>
-      <path d="M92 52 L86 28 L80 52 Z" fill="#e8f7ff"/>
-      <path d="M42 150 C28 146,20 128,28 118 C40 102,60 128,62 140" fill="#d6f0ff"/>
-    </g>
-  </svg>
-
-  <!-- Left column: button and decorations -->
-  <div style="text-align:center; z-index:9">
-    <button class="cute-button" id="openBtn" aria-controls="paper" title="Open for astie :3">
-      <span class="icon">❤</span>
-      <span>Open the note</span>
-    </button>
-    <div style="margin-top:12px;display:flex;gap:12px;justify-content:center" aria-hidden="true">
-      <div style="width:56px;height:56px;border-radius:12px;background:#fff8fb;border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;font-weight:800;color:#ff5ea2">✿</div>
-      <div style="width:56px;height:56px;border-radius:12px;background:#fff8fb;border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;font-weight:800;color:#9ad6ff">☆</div>
-    </div>
-  </div>
-
-  <!-- Paper -->
-  <div class="paper-wrap" aria-hidden="false">
-    <div id="paper" class="paper" role="dialog" aria-labelledby="paper-text" aria-modal="false" tabindex="-1">
-      <!-- EXACT requested sentence only -->
-      <p id="paper-text" aria-hidden="false">
-        <span class="typewrap"><span class="typed">you're the most cute person I've ever met, I love you, astie &lt;3</span></span>
-      </p>
-
-      <div class="sticker" aria-hidden="true">:3</div>
-
-      <!-- SVG hearts around edges (visual only) -->
-      <svg class="edge-svg" viewBox="0 0 460 320" preserveAspectRatio="none" aria-hidden="true">
+    <!-- left pony (SVG inline, original stylized pony-like character, non-copyright) -->
+    <div class="pony left" aria-hidden="true">
+      <svg viewBox="0 0 180 160" width="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
         <defs>
-          <g id="h">
-            <path d="M6 10 C6 -2 22 -2 22 10 C22 22 6 34 6 34 C6 34 -10 22 -10 10 C-10 -2 6 -2 6 10Z" fill="#ff6aa6"/>
-          </g>
+          <linearGradient id="m1" x1="0" x2="1">
+            <stop offset="0" stop-color="#ffd6f0"/><stop offset="1" stop-color="#ffb6e0"/>
+          </linearGradient>
+          <linearGradient id="m2" x1="0" x2="1">
+            <stop offset="0" stop-color="#bfefff"/><stop offset="1" stop-color="#9de6ff"/>
+          </linearGradient>
         </defs>
-        <!-- top hearts -->
-        <use href="#h" x="40" y="8" transform="scale(1.2)"/>
-        <use href="#h" x="90" y="4" transform="scale(1)"/>
-        <use href="#h" x="150" y="2" transform="scale(1.05)"/>
-        <use href="#h" x="210" y="6" transform="scale(0.95)"/>
-        <use href="#h" x="280" y="8" transform="scale(1.1)"/>
-        <use href="#h" x="340" y="4" transform="scale(0.95)"/>
-        <!-- right column -->
-        <use href="#h" x="422" y="50" transform="scale(0.9)"/>
-        <use href="#h" x="422" y="120" transform="scale(0.9)"/>
-        <!-- bottom -->
-        <use href="#h" x="38" y="286" transform="scale(1.1) rotate(180 6 10)"/>
-        <use href="#h" x="110" y="292" transform="scale(0.95) rotate(180 6 10)"/>
-        <use href="#h" x="190" y="294" transform="scale(1.05) rotate(180 6 10)"/>
-        <use href="#h" x="270" y="292" transform="scale(0.95) rotate(180 6 10)"/>
-        <use href="#h" x="340" y="288" transform="scale(1.0) rotate(180 6 10)"/>
-        <!-- left column -->
-        <use href="#h" x="-18" y="50" transform="scale(0.9)"/>
-        <use href="#h" x="-18" y="120" transform="scale(0.9)"/>
+        <!-- body -->
+        <ellipse cx="78" cy="102" rx="50" ry="36" fill="#fff4f8" stroke="#ffd6e9" stroke-width="2"/>
+        <!-- head -->
+        <ellipse cx="40" cy="78" rx="24" ry="20" fill="#fff4f8" stroke="#ffd6e9" stroke-width="2"/>
+        <!-- ear -->
+        <path d="M32 64 Q36 52 44 62" fill="#ffd6f0" stroke="#ffb0d6" stroke-width="1"/>
+        <!-- mane -->
+        <path d="M20 70 C10 40, 60 34, 56 64 C74 56, 64 90, 40 76 Z" fill="url(#m1)" opacity="0.98"/>
+        <path d="M24 80 C10 90, 34 116, 64 106" fill="url(#m2)" opacity="0.95"/>
+        <!-- eye -->
+        <circle cx="38" cy="78" r="3.6" fill="#3a0f2a"/>
+        <circle cx="37" cy="76.2" r="1.3" fill="#fff"/>
+        <!-- tail -->
+        <path d="M114 98 C150 86, 150 120, 122 120 C110 120, 106 110, 114 98 Z" fill="#ffd6f0" opacity="0.98"/>
+        <!-- hooves -->
+        <ellipse cx="60" cy="132" rx="10" ry="6" fill="#ffe6f2" />
+        <ellipse cx="96" cy="132" rx="10" ry="6" fill="#ffe6f2" />
       </svg>
+    </div>
 
-      <!-- small pony sticker under paper -->
-      <svg class="pony-sticker" viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#fff0ff"/><stop offset="1" stop-color="#e0f7ff"/></linearGradient></defs>
-        <rect x="4" y="8" rx="16" ry="16" width="232" height="94" fill="url(#g1)" stroke="#fff" stroke-opacity="0.6"/>
-        <g transform="translate(28,24) scale(0.95)">
-          <ellipse cx="48" cy="46" rx="34" ry="28" fill="#fff" stroke="#f3e9f6"/>
-          <circle cx="36" cy="36" r="8" fill="#fff"/>
-          <path d="M30 30 C24 26, 34 20, 46 22" fill="#ffd7f4"/>
-          <path d="M52 24 C62 20,70 34,60 38" fill="#d6f0ff"/>
-          <circle cx="56" cy="38" r="4" fill="#4a2b7a"/>
-        </g>
+    <!-- right pony (mirrored) -->
+    <div class="pony right" aria-hidden="true">
+      <svg viewBox="0 0 180 160" width="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="n1" x1="0" x2="1">
+            <stop offset="0" stop-color="#d8fff7"/><stop offset="1" stop-color="#b6fff0"/>
+          </linearGradient>
+          <linearGradient id="n2" x1="0" x2="1">
+            <stop offset="0" stop-color="#ffe6b8"/><stop offset="1" stop-color="#ffdca1"/>
+          </linearGradient>
+        </defs>
+        <!-- body -->
+        <ellipse cx="78" cy="102" rx="50" ry="36" fill="#fffaf2" stroke="#fff0d6" stroke-width="2"/>
+        <!-- head -->
+        <ellipse cx="40" cy="78" rx="24" ry="20" fill="#fffaf2" stroke="#fff0d6" stroke-width="2"/>
+        <!-- ear -->
+        <path d="M32 64 Q36 52 44 62" fill="#d8fff7" stroke="#b6fff0" stroke-width="1"/>
+        <!-- mane -->
+        <path d="M20 70 C10 40, 60 34, 56 64 C74 56, 64 90, 40 76 Z" fill="url(#n1)" opacity="0.98"/>
+        <path d="M24 80 C10 90, 34 116, 64 106" fill="url(#n2)" opacity="0.95"/>
+        <!-- eye -->
+        <circle cx="38" cy="78" r="3.6" fill="#2b0b2b"/>
+        <circle cx="37" cy="76.2" r="1.3" fill="#fff"/>
+        <!-- tail -->
+        <path d="M114 98 C150 86, 150 120, 122 120 C110 120, 106 110, 114 98 Z" fill="#d8fff7" opacity="0.98"/>
+        <!-- hooves -->
+        <ellipse cx="60" cy="132" rx="10" ry="6" fill="#fff7e6" />
+        <ellipse cx="96" cy="132" rx="10" ry="6" fill="#fff7e6" />
       </svg>
+    </div>
+
+    <div class="center">
+      <div class="decor" aria-hidden="true">
+        <div class="big-badge">cute core ✨</div>
+        <div class="cute-list" aria-hidden="true">
+          <div class="badge">pastel</div>
+          <div class="badge">sparkles</div>
+          <div class="badge">soft shadows</div>
+          <div class="badge">y2k</div>
+        </div>
+        <div class="btn-wrap">
+          <button class="open-btn" id="openBtn" aria-controls="paper" aria-expanded="false">Open the surprise!</button>
+        </div>
+      </div>
+
+      <div class="stage" aria-hidden="false">
+        <div class="paper" id="paper" role="dialog" aria-label="Surprise paper">
+          <div class="sheet">
+            <div class="fold">
+              <div class="sticker">for astie</div>
+            </div>
+
+            <div class="message-wrap" id="messageWrap" aria-hidden="true">
+              <div class="message" id="paperMessage">
+                you're the most cute person I've ever met, I love you, astie &lt;3
+              </div>
+            </div>
+
+            <div class="hearts-left" aria-hidden="true">
+              <div class="mini-heart"></div>
+              <div class="mini-heart"></div>
+              <div class="mini-heart"></div>
+            </div>
+            <div class="hearts-right" aria-hidden="true">
+              <div class="mini-heart"></div>
+              <div class="mini-heart"></div>
+              <div class="mini-heart"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- small floating hearts -->
-  <div class="floating" style="left:18%;top:22%;z-index:7"><div class="heart" style="width:22px;height:22px;animation-delay:.2s"></div></div>
-  <div class="floating" style="left:74%;top:16%;z-index:7"><div class="heart" style="width:16px;height:16px;animation-delay:.8s;background:linear-gradient(180deg,#ffd7a6,#ffb38a)"></div></div>
+  <script>
+    // Ensure the only text on the paper is exactly what user asked.
+    // (It's present in the element #paperMessage and nothing else will be added.)
+    (function(){
+      const btn = document.getElementById('openBtn');
+      const paper = document.getElementById('paper');
+      const messageWrap = document.getElementById('messageWrap');
+      const ariaBtn = btn;
 
-</main>
+      // Guarantee the message content exactly — no accidental whitespace changes:
+      const exactText = "you're the most cute person I've ever met, I love you, astie <3";
+      const messageEl = document.getElementById('paperMessage');
+      messageEl.textContent = exactText;
 
-<script>
-  (function(){
-    const btn = document.getElementById('openBtn');
-    const paper = document.getElementById('paper');
-    const typed = document.querySelector('.typed');
-    let opened = false;
-
-    // hide typed overflow initially for animation
-    typed.style.maxWidth = '0ch';
-    typed.style.display = 'inline-block';
-    typed.style.whiteSpace = 'pre';
-    typed.style.overflow = 'hidden';
-
-    btn.addEventListener('click', function(){
-      if(opened) return;
-      opened = true;
-
-      // small button pop
-      btn.animate([{transform:'translateY(0) scale(1)'},{transform:'translateY(-8px) scale(1.04)'},{transform:'translateY(0) scale(1)'}],{duration:420,easing:'cubic-bezier(.2,.9,.3,1)'});
-
-      setTimeout(()=> {
+      let opened = false;
+      btn.addEventListener('click', function(){
+        if (opened) return;
+        opened = true;
+        // Open paper animation
         paper.classList.add('open');
-        paper.setAttribute('aria-modal','true');
-        paper.focus();
+        // set aria states
+        ariaBtn.setAttribute('aria-expanded','true');
+        messageWrap.setAttribute('aria-hidden','false');
+        // focus on message for accessibility
+        setTimeout(()=> {
+          messageEl.setAttribute('tabindex','-1');
+          messageEl.focus({preventScroll:true});
+        }, 700);
+      });
 
-        // trigger typing reveal: animate max-width to full (ch-based for monospace look)
-        // we animate with steps to look like handwriting reveal
-        typed.style.transition = 'max-width 2.6s steps(60,end)';
-        typed.style.maxWidth = typed.textContent.length + 'ch';
-      },140);
-    });
+      // keyboard accessibility: Enter or Space triggers button
+      btn.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
 
-    // Prevent accidental text changes — no runtime injection of content
-    document.addEventListener('mousedown', function(e){ if(e.target === btn) e.preventDefault(); });
-  })();
-</script>
+      // ensure no extra content is added to the paper DOM subtree later
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach(m => {
+          // if nodes are added to the message area that aren't the exact text node, remove them
+          if (m.addedNodes && m.addedNodes.length) {
+            // keep only the text content, remove extras
+            if (messageEl.childNodes.length > 1) {
+              messageEl.textContent = exactText;
+            }
+          }
+        });
+      });
+      observer.observe(messageEl, { childList: true, subtree: true });
+
+      // optional: prevent double clicking causing visual glitches
+      btn.addEventListener('dblclick', function(e){
+        e.preventDefault();
+      });
+    })();
+  </script>
 </body>
 </html>
